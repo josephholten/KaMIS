@@ -1,0 +1,4 @@
+changes made to graph files
+
+karate: changed number of nodes from 34 to 35, format now seemingly correct
+polblogs: changed number of nodes from 1490 to 1491, format now seemingly correct

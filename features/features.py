@@ -1,4 +1,5 @@
 import os
+import sys
 import subprocess
 import numpy as np
 import networkx as nx
@@ -6,6 +7,7 @@ import matplotlib.pyplot as plt
 import xgboost
 
 def parse_graph(graph_list: list[str]) -> nx.Graph: 
+    """ parses METIS graph format into networkx graph"""
     header = graph_list[0].split()
     assert len(header) in {2,3}  # last param can be omitted
     weights = 0
@@ -17,7 +19,6 @@ def parse_graph(graph_list: list[str]) -> nx.Graph:
 
     for v, line in zip(graph.nodes, graph_list[1:]):
         line = list(map(int, line.split()))
-        print(line)
         edges = []
         if weights & 2 == 2:  # graph has node weights
             graph.nodes[v]['weight'] = line.pop(0)
@@ -34,6 +35,7 @@ def parse_graph(graph_list: list[str]) -> nx.Graph:
 
 
 def features(g: nx.Graph) -> np.array:
+    """ calculates feature matrix, where each row is a feature vector for a specific node"""
 
     def average(x):
         return sum(x)/len(x) 
@@ -50,6 +52,7 @@ def features(g: nx.Graph) -> np.array:
     greedy_chr_nmbr = len(set(greedy_coloring.values()))
 
     def f(v):
+        """ calculates the feature vector """
         return [
             # graph-theoretical features
             g.number_of_nodes(),                                          # F1: n, number of nodes
@@ -68,15 +71,14 @@ def features(g: nx.Graph) -> np.array:
     return np.array([f(v) for v in g.nodes])
 
 
-def search_for_graphs(keyword_list, all_graphs=os.listdir(path="instances")):
+def search_for_graphs(keyword_list, graph_folder="instances"):
     # find matching paths for keywords
-    matched_paths = [[path for path in all_graphs if kw in path] for kw in keyword_list]
-
+    matched_paths = [[path for path in os.listdir(graph_folder) if kw in path and path[-6:] == ".graph"] for kw in keyword_list]
     for paths in matched_paths:
         # check if kw's are unique
         assert len(paths) == 1
 
-    return [paths[0] for paths in matched_paths]
+    return [graph_folder + ("/" if graph_folder[-1] != "/" else "") + paths[0] for paths in matched_paths]
 
 training_graphs = search_for_graphs([
         "jazz",
@@ -95,22 +97,34 @@ test_graphs = search_for_graphs([
         "polblogs",
 ])
 
-"""
-graph_path = "examples/simple.graph" 
-# store maximum independent set of current graph here:
+if len(training_graphs) < 1:
+    print("no training graphs provided, terminating...")
+    sys.exit()
+
+# initialize np.array feature_data and labels through first graph
+graph_path = training_graphs[0]
 graph_mis_path = graph_path[:-6]+".MIS"
-# compute maximum independent set of graph
-subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--output="+graph_mis_path, "--weight_source=uniform"])
+subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
 with open(graph_path) as graph_file, open(graph_mis_path) as mis_file:
-    g = parse_graph(graph_file.readlines())  # read graph from file
-    # nx.draw(g)             
-    # plt.show()
-    feature_data = features(g)         # calculate features
-    # print(feature_data)
-    labels = np.array(list(map(int, mis_file.readlines())))   # read computed labels
-    dtrain = xgboost.DMatrix(feature_data, label=labels) 
+    g = parse_graph(graph_file.readlines())  
+    g_labels = np.array(list(map(int, mis_file.readlines())))   
 
+feature_data = features(g)
+labels = g_labels 
 
+for graph_path in training_graphs[1:]:
+    # compute maximum independent set of graph
+    graph_mis_path = graph_path[:-6]+".MIS"
+    subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-"""
+    # read graph and labels from resp. files
+    with open(graph_path) as graph_file, open(graph_mis_path) as mis_file:
+        g = parse_graph(graph_file.readlines())                     
+        g_labels = np.array(list(map(int, mis_file.readlines())))   
+
+    # append data and labels to np.array
+    np.append(feature_data, features(g), axis=0)        
+    np.append(labels, g_labels)                         
+
+dtrain = xgboost.DMatrix(np.array(feature_data), label=np.array(labels)) 
