@@ -33,8 +33,6 @@ def parse_graph(graph_list: list[str]) -> nx.Graph:
     return graph
 
 
-
-
 def features(g: nx.Graph) -> np.array:
 
     def average(x):
@@ -69,6 +67,35 @@ def features(g: nx.Graph) -> np.array:
 
     return np.array([f(v) for v in g.nodes])
 
+
+def search_for_graphs(keyword_list, all_graphs=os.listdir(path="instances")):
+    # find matching paths for keywords
+    matched_paths = [[path for path in all_graphs if kw in path] for kw in keyword_list]
+
+    for paths in matched_paths:
+        # check if kw's are unique
+        assert len(paths) == 1
+
+    return [paths[0] for paths in matched_paths]
+
+training_graphs = search_for_graphs([
+        "jazz",
+        "celegans_met",
+        "email",
+        "adjnoun",
+        "celegansneural",
+        "dolphins",
+        "football",
+        "karate",
+        "lesmis",
+        "netscience"
+])
+
+test_graphs = search_for_graphs([
+        "polblogs",
+])
+
+"""
 graph_path = "examples/simple.graph" 
 # store maximum independent set of current graph here:
 graph_mis_path = graph_path[:-6]+".MIS"
@@ -86,3 +113,4 @@ with open(graph_path) as graph_file, open(graph_mis_path) as mis_file:
 
 
 
+"""

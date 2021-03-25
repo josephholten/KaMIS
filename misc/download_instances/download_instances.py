@@ -7,7 +7,7 @@ url = 'https://www.cc.gatech.edu/dimacs10/archive/clustering.shtml'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, features="html5lib")
 
-skip_first_n = 25
+skip_first_n = 0
 downloaded = 0
 
 for a_tag in soup.find_all('a'):
