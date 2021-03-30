@@ -34,3 +34,7 @@ docs/*
 deploy
 optimized
 instances
+
+# Predictions and Models calculated by xgboost
+*.pred
+*.model
