@@ -16,6 +16,10 @@ keyword_list = sys.argv[3:]
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
 for graph_path in graph_paths:
-    print("calculating kernel of", graph_path)
     graph_name = graph_path[len(graph_folder):-6] 
-    subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--output_kernel=" + kernel_folder + graph_name + ".kernel"])
+    kernel_path = kernel_folder + graph_name + ".kernel"
+    if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:
+        print("calculating kernel of", graph_path)
+        subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--output_kernel=" + kernel_path])
+    else:
+        print("already calculated kernel of", graph_path)
