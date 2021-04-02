@@ -5,7 +5,7 @@ import subprocess
 
 usage_doc = """ Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...] """ 
 
-graph_folder_DEFAULT = "/home/graph_collections/independentset_instances/" 
+graph_folder_DEFAULT = "/home/graph_collection/independentset_instances/" 
 kernel_folder_DEFAULT = "/home/jholten/kernels/" 
 
 
