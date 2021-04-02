@@ -92,6 +92,10 @@ def get_graphs_and_labels(graph_paths: list[str], mis_paths=None) -> list[nx.Gra
 
 def get_dmatrix_from_graphs(graphs):
     # initialize np.array feature_data and labels through first graph
+    graphs = [graph for graph in graphs if graph]
+    if not graphs:
+        print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
+        return np.array()
 
     feature_data = features(graphs[0])
     labels = graphs[0].graph['labels']
