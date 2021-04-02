@@ -5,8 +5,8 @@ import subprocess
 
 usage_doc = """ Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...] """ 
 
-graph_folder_DEFAULT = "/home/graph_collections/independentset_instances" 
-kernel_folder_DEFAULT = "/home/jholten/kernels" 
+graph_folder_DEFAULT = "/home/graph_collections/independentset_instances/" 
+kernel_folder_DEFAULT = "/home/jholten/kernels/" 
 
 
 if any([arg == "-h" or arg == "--help" for arg in sys.argv]):
