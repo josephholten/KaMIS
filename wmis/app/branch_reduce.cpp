@@ -128,6 +128,7 @@ int main(int argn, char **argv) {
                 std::cout << "kernel_time " << kernel_time.count() << "\n";
 
                 graph_io::writeGraphNodeWeighted(rG, output_reduced);
+                return 0;   // added since calculating the kernel is in the same order of maginitude of calculation time as running branch and reduce
         }
 
         auto start = std::chrono::system_clock::now();
