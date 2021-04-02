@@ -5,6 +5,10 @@ import subprocess
 
 """ Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...] """ 
 
+if any([arg == "-h" or arg == "--help" for arg in sys.argv]):
+    print(" Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...]")
+    sys.exit()
+
 assert len(sys.argv) >= 2, "Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...]"
 graph_folder = os.path.abspath(sys.argv[1])
 kernel_folder = os.path.abspath(sys.argv[2])

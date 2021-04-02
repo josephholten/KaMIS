@@ -3,6 +3,8 @@ import numpy as np
 import networkx as nx
 import xgboost as xgb
 
+from typing import List
+
 from features import features
 
 def metis_format_to_nx(graph_file) -> nx.Graph: 
@@ -68,7 +70,7 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True):
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-def get_graphs_and_labels(graph_paths: list[str], mis_paths=None) -> list[nx.Graph]: 
+def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Graph]: 
     """ get list of nx.Graphs (each with their associated MIS labels) from a list of paths """
 
     graphs = [] 
@@ -95,7 +97,7 @@ def get_dmatrix_from_graphs(graphs):
     graphs = [graph for graph in graphs if graph]
     if not graphs:
         print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
-        return np.array()
+        return np.array([])
 
     feature_data = features(graphs[0])
     labels = graphs[0].graph['labels']
