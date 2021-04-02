@@ -31,8 +31,8 @@ graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
 for graph_path in graph_paths:
     graph_name = graph_path[len(graph_folder):-6] 
     kernel_path = kernel_folder + graph_name + ".kernel"
-    if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:
+    if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:   # kernel file does exist and isn't empty
+        print("already calculated kernel of", graph_path)
+    else: 
         print("calculating kernel of", graph_path)
         subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--output_kernel=" + kernel_path])
-    else:
-        print("already calculated kernel of", graph_path)
