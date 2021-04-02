@@ -62,6 +62,31 @@ void assign_weights(graph_access& G, const MISConfig& mis_config) {
         }
 }
 
+// ------- joseph's addition -------------------
+// added on 1.4.21 at 15:00
+// copied directly from weighted_ls.cpp, line 177ff 
+
+std::vector<NodeID> reverse_mapping;
+NodeWeight perform_reduction(std::unique_ptr<branch_and_reduce_algorithm>& reducer, graph_access& G, graph_access& rG, const MISConfig& config) {
+	reducer = std::unique_ptr<branch_and_reduce_algorithm>(new branch_and_reduce_algorithm(G, config));
+	reducer->reduce_graph();
+
+	// Retrieve reduced graph
+	reverse_mapping = std::vector<NodeID>(G.number_of_nodes(), 0);
+	reducer->build_graph_access(rG, reverse_mapping);
+
+	if (!is_IS(rG)) {
+		std::cerr << "ERROR: reduced graph is not independent" << std::endl;
+		exit(1);
+	}
+
+	NodeWeight is_weight = reducer->get_current_is_weight();
+
+	return is_weight;
+}
+
+// ------ end of joseph's addition ------------
+
 int main(int argn, char **argv) {
         mis_log::instance()->restart_total_timer();
         //mis_log::instance()->print_title();
@@ -86,8 +111,79 @@ int main(int argn, char **argv) {
 
         mis_log::instance()->set_graph(G);
 
-        //std::cout << "%nodes " << G.number_of_nodes() << std::endl;
-        //std::cout << "%edges " << G.number_of_edges() << std::endl;
+        // std::cout << "%nodes " << G.number_of_nodes() << std::endl;
+        // std::cout << "%edges " << G.number_of_edges() << std::endl;
+
+        // ------- joseph's addition -------------------
+        // added on 1.4.21 at 15:00
+
+
+        // copied directly from weighted_ls.cpp, line 177ff, modified reduced graph output filename 
+        // this doesn't work, only produces a graph with 0 nodes and 0 edges ... why?
+        // just reduce the graph and write it into a file
+
+        graph_access rG;
+        NodeWeight weight_offset = 0;
+        std::unique_ptr<branch_and_reduce_algorithm> kernel_reducer;
+
+        auto start_red = std::chrono::system_clock::now();
+        weight_offset = perform_reduction(kernel_reducer, G, rG, mis_config);
+        auto end_red = std::chrono::system_clock::now();
+
+        std::chrono::duration<float> reduction_time = end_red - start_red;
+
+        std::string kernel_name (mis_config.output_filename);
+        kernel_name.append(".kernel");
+        std::ofstream output_reduced(kernel_name);
+
+        output_reduced << "%reduction_time " << reduction_time.count() << "\n";
+        output_reduced << "%reduction_offset " << weight_offset << "\n";
+
+        graph_io::writeGraphNodeWeighted(rG, output_reduced);
+        return 0;
+
+        // recude graph and run local search
+        // graph_access rG;
+
+        // auto reduction_start = std::chrono::system_clock::now();
+        // weight_offset = perform_reduction(kernel_reducer, G, rG, mis_config);
+        // auto reduction_end = std::chrono::system_clock::now();
+
+        // std::chrono::duration<float> reduction_time = reduction_end - reduction_start;
+
+        // //std::cout << "%reduction_nodes " << rG.number_of_nodes() << "\n";
+        // //std::cout << "%reduction_time " << reduction_time.count() << "\n";
+        // //std::cout << "%reduction_offset " << weight_offset << std::endl;
+
+        // if (rG.number_of_nodes() != 0) {
+        //         // perform_ils(mis_config, rG, weight_offset);
+        // } else {
+        //         // std::cout << "MIS_weight " << weight_offset << std::endl;
+        // }
+
+        // kernel_reducer->reverse_reduction(G, rG, reverse_mapping);
+
+        // std::string kernel_name (mis_config.output_filename);
+        // kernel_name.append(".kernel");
+        // std::ofstream output_reduced(kernel_name);
+        // graph_io::writeGraphNodeWeighted(G, output_reduced);
+
+        // if (!is_IS(G)) {
+        //         std::cerr << "ERROR: graph after inverse reduction is not independent" << std::endl;
+        //         exit(1);
+        // } else {
+        //         NodeWeight is_weight = 0;
+
+        //         forall_nodes(G, node) {
+        //                 if (G.getPartitionIndex(node) == 1) {
+        //                         is_weight += G.getNodeWeight(node);
+        //                 }
+        //         } endfor
+
+        //         std::cout << "MIS_weight_check " << is_weight << std::endl;
+        // }
+        
+        // ------ end of joseph's addition ------------
 
         auto start = std::chrono::system_clock::now();
 

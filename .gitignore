@@ -21,6 +21,9 @@
 *.la
 *.a
 *.lib
+ 
+# Compiled python code
+__pycache__
 
 # Executables
 *.exe
