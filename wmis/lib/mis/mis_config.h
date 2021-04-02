@@ -22,6 +22,8 @@ struct MISConfig {
     std::string graph_filename;
     // Name of the output file.
     std::string output_filename;
+    // Name of the output_kernel file.
+    std::string output_kernel_filename;
     // Seed for the RNG.
     int seed;
     // Time limit for the evolutionary algorithm
@@ -30,6 +32,8 @@ struct MISConfig {
     bool print_log;
     // Write the inpendent set into a file
     bool write_graph;
+    // Write the kernel into a file
+    bool write_kernel;
     // Write the log into the console
     bool console_log;
     // Number of iterations for the ILS.

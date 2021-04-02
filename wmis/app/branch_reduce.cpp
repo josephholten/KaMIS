@@ -62,10 +62,6 @@ void assign_weights(graph_access& G, const MISConfig& mis_config) {
         }
 }
 
-// ------- joseph's addition -------------------
-// added on 1.4.21 at 15:00
-// copied directly from weighted_ls.cpp, line 177ff 
-
 std::vector<NodeID> reverse_mapping;
 NodeWeight perform_reduction(std::unique_ptr<branch_and_reduce_algorithm>& reducer, graph_access& G, graph_access& rG, const MISConfig& config) {
 	reducer = std::unique_ptr<branch_and_reduce_algorithm>(new branch_and_reduce_algorithm(G, config));
@@ -84,8 +80,6 @@ NodeWeight perform_reduction(std::unique_ptr<branch_and_reduce_algorithm>& reduc
 
 	return is_weight;
 }
-
-// ------ end of joseph's addition ------------
 
 int main(int argn, char **argv) {
         mis_log::instance()->restart_total_timer();
@@ -114,39 +108,27 @@ int main(int argn, char **argv) {
         // std::cout << "%nodes " << G.number_of_nodes() << std::endl;
         // std::cout << "%edges " << G.number_of_edges() << std::endl;
 
-        // ------- joseph's addition -------------------
-        // added on 1.4.21 at 15:00
+        if (mis_config.write_kernel) {
+                // just reduce the graph and write it into a file
+                graph_access rG;
+                NodeWeight weight_offset = 0;
+                std::unique_ptr<branch_and_reduce_algorithm> kernel_reducer;
 
+                auto kernel_start = std::chrono::system_clock::now();
+                weight_offset = perform_reduction(kernel_reducer, G, rG, mis_config);
+                auto kernel_end = std::chrono::system_clock::now();
 
-        // copied directly from weighted_ls.cpp, line 177ff, modified reduced graph output filename 
+                std::chrono::duration<float> kernel_time = kernel_end - kernel_start;
 
+                std::ofstream output_reduced(mis_config.output_kernel_filename);
 
-        // just reduce the graph and write it into a file
+                output_reduced << "%kernel_time " << kernel_time.count() << "\n";
 
-        graph_access rG;
-        NodeWeight weight_offset = 0;
-        std::unique_ptr<branch_and_reduce_algorithm> kernel_reducer;
+                std::cout << "kernel_nodes " << rG.number_of_nodes() << "\n";
+                std::cout << "kernel_time " << kernel_time.count() << "\n";
 
-        auto start_red = std::chrono::system_clock::now();
-        weight_offset = perform_reduction(kernel_reducer, G, rG, mis_config);
-        auto end_red = std::chrono::system_clock::now();
-
-        std::chrono::duration<float> reduction_time = end_red - start_red;
-
-        std::string kernel_name (mis_config.output_filename.substr(0,mis_config.output_filename.find_last_of('.')));
-        kernel_name.append(".kernel");
-        std::ofstream output_reduced(kernel_name);
-
-        output_reduced << "%reduction_time " << reduction_time.count() << "\n";
-        output_reduced << "%reduction_offset " << weight_offset << "\n";
-
-        std::cout << "reduction_nodes " << rG.number_of_nodes() << "\n";
-        std::cout << "reduction_time " << reduction_time.count() << "\n";
-        // std::cout << "reduction_offset " << weight_offset << std::endl;
-
-        graph_io::writeGraphNodeWeighted(rG, output_reduced);
-
-        // ------ end of joseph's addition ------------
+                graph_io::writeGraphNodeWeighted(rG, output_reduced);
+        }
 
         auto start = std::chrono::system_clock::now();
 
@@ -161,7 +143,6 @@ int main(int argn, char **argv) {
         std::cout << "MIS_weight " << MWIS_weight << "\n";
 
         reducer.apply_branch_reduce_solution(G);
-
         if (!is_IS(G)) {
                 std::cerr << "ERROR: graph after inverse reduction is not independent" << std::endl;
                 exit(1);
