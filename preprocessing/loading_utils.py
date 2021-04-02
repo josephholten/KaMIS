@@ -106,5 +106,7 @@ def get_dmatrix_from_graphs(graphs):
 
 # testing
 if __name__ == "__main__":
-    with open("instances/karate.graph") as graph_file:
-        G = metis_format_to_nx(graph_file)
+    # with open("instances/karate.graph") as graph_file:
+    #     G = metis_format_to_nx(graph_file)
+    # print(search_for_graphs(["adjnoun.graph", "astro"]))
+    pass
