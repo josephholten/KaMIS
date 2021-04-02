@@ -21,10 +21,10 @@ if len(sys.argv) < 2:
     else:
         print(usage_doc)
         sys.exit()
-
-graph_folder = os.path.abspath(sys.argv[1])
-kernel_folder = os.path.abspath(sys.argv[2])
-keyword_list = sys.argv[3:]
+else:
+    graph_folder = os.path.abspath(sys.argv[1])
+    kernel_folder = os.path.abspath(sys.argv[2])
+    keyword_list = sys.argv[3:]
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
 for graph_path in graph_paths:
