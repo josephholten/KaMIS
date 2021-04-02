@@ -3,13 +3,25 @@ import sys
 from loading_utils import search_for_graphs
 import subprocess
 
-""" Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...] """ 
+usage_doc = """ Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...] """ 
+
+graph_folder_DEFAULT = "/home/graph_collections/independentset_instances" 
+kernel_folder_DEFAULT = "/home/jholten/kernels" 
+
 
 if any([arg == "-h" or arg == "--help" for arg in sys.argv]):
-    print(" Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...]")
+    print(usage_doc)
     sys.exit()
 
-assert len(sys.argv) >= 2, "Usage: python calc_kernels.py <graph_folder> <kernel_folder> [graph_keyword1 graph_keyword2 ...]"
+if len(sys.argv) < 2:
+    response = input(f"too few arguments, use default values (graph_folder={graph_folder_DEFAULT}, kernel_folder={kernel_folder_DEFAULT})? Y/n")
+    if response.lower() in {"", "y"}:
+        graph_folder = graph_folder_DEFAULT
+        kernel_folder = kernel_folder_DEFAULT 
+    else:
+        print(usage_doc)
+        sys.exit()
+
 graph_folder = os.path.abspath(sys.argv[1])
 kernel_folder = os.path.abspath(sys.argv[2])
 keyword_list = sys.argv[3:]
