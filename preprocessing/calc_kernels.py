@@ -18,6 +18,7 @@ if len(sys.argv) < 2:
     if response.lower() in {"", "y"}:
         graph_folder = graph_folder_DEFAULT
         kernel_folder = kernel_folder_DEFAULT 
+        keyword_list = []
     else:
         print(usage_doc)
         sys.exit()
