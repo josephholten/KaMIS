@@ -66,7 +66,7 @@ keyword_list = [arg for arg in sys.argv[2:] if arg not in set(itertools.chain.fr
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
 for idx, graph_path in enumerate(graph_paths, start=1):
-    print(f"graph #{idx}, path: {graph_path}")
+    print(f"graph #{idx}/{len(graph_paths)}, path: {graph_path}")
     graph_name = graph_path[len(graph_folder):-6] 
     kernel_path = kernel_folder + graph_name + ".kernel"
     mis_path = mis_folder + graph_name + ".MIS"
