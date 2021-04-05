@@ -23,7 +23,7 @@ struct MISConfig {
     // Name of the output file.
     std::string output_filename;
     // Name of the output_kernel file.
-    std::string output_kernel_filename;
+    std::string kernel_filename;
     // Seed for the RNG.
     int seed;
     // Time limit for the evolutionary algorithm

@@ -47,7 +47,6 @@ calc_kernel, calc_mis = map(lambda x: len(x) == 1, options)
 assert any([calc_kernel, calc_mis]), "no jobs given. exiting."
 
 if calc_kernel:
-    print("should calc kernel")
     if options[0][0] == "": # meaning kernel option was passed with no path
         kernel_folder = graph_folder
     else:
@@ -56,7 +55,6 @@ else:
     kernel_folder = ""
 
 if calc_mis: 
-    print("should calc mis")
     if options[1][0] == "": # meaning mis option was passed with no path
         mis_folder = graph_folder
     else:
@@ -67,7 +65,8 @@ else:
 keyword_list = [arg for arg in sys.argv[2:] if arg not in set(itertools.chain.from_iterable(options))]
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
-for graph_path in graph_paths:
+for idx, graph_path in enumerate(graph_paths, start=1):
+    print(f"graph #{idx}, path: {graph_path}")
     graph_name = graph_path[len(graph_folder):-6] 
     kernel_path = kernel_folder + graph_name + ".kernel"
     mis_path = mis_folder + graph_name + ".MIS"
@@ -77,24 +76,23 @@ for graph_path in graph_paths:
 
     if calc_kernel:
         if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:   # kernel file does exist and isn't empty
-            print("already calculated kernel of", graph_path)
+            print("already calculated kernel")
         else:
             job_str += "kernel"
-            job_options += ["--output_kernel=" + kernel_path]
+            job_options += ["--kernel=" + kernel_path]
 
     if job_str:
         job_str += " and "
 
     if calc_mis:
         if os.path.isfile(mis_path) and os.path.getsize(mis_path) > 0:
-            print("already calculated MIS of", graph_path)
+            print("already calculated MIS")
         else:
             job_str += "mis"
             job_options += ["--output=" + mis_path]
 
     if job_options:
-        print("calculating", job_str, "of", graph_path)
+        print("calculating", job_str)
         subprocess.run(["deploy/weighted_branch_reduce", graph_path, *job_options])
-        print("wrote kernel to", kernel_path)
     else:
-        print("skipping", graph_path)
+        print("skipping")

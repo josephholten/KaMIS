@@ -120,15 +120,16 @@ int main(int argn, char **argv) {
 
                 std::chrono::duration<float> kernel_time = kernel_end - kernel_start;
 
-                std::ofstream output_reduced(mis_config.output_kernel_filename);
+                std::ofstream output_reduced(mis_config.kernel_filename);
 
                 output_reduced << "%kernel_time " << kernel_time.count() << "\n";
 
                 std::cout << "kernel_nodes " << rG.number_of_nodes() << "\n";
                 std::cout << "kernel_time " << kernel_time.count() << "\n";
 
+                std::cout << "writing kernel to " << mis_config.kernel_filename << "\n";
                 graph_io::writeGraphNodeWeighted(rG, output_reduced);
-                return 0;   // added since calculating the kernel is in the same order of maginitude of calculation time as running branch and reduce
+                // return 0;   // added since calculating the kernel is in the same order of maginitude of calculation time as running branch and reduce
         }
 
         auto start = std::chrono::system_clock::now();
