@@ -62,7 +62,7 @@ if calc_mis:
 else:
     mis_folder = ""
 
-keyword_list = [arg for arg in sys.argv[2:] if arg not in set(itertools.chain.from_iterable(options))]
+keyword_list = [arg for arg in sys.argv[2:] if not any([arg[:len(specifier)] == specifier for specifier in ["--kernels", "--mis"]])] 
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
 for idx, graph_path in enumerate(graph_paths, start=1):
