@@ -93,6 +93,6 @@ for idx, graph_path in enumerate(graph_paths, start=1):
 
     if job_options:
         print("calculating", job_str)
-        subprocess.run(["deploy/weighted_branch_reduce", graph_path, *job_options])
+        subprocess.run(["deploy/weighted_branch_reduce", graph_path, *job_options, "--time_limit=3600"])
     else:
         print("skipping")
