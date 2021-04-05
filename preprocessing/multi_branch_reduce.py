@@ -47,6 +47,7 @@ calc_kernel, calc_mis = map(lambda x: len(x) == 1, options)
 assert any([calc_kernel, calc_mis]), "no jobs given. exiting."
 
 if calc_kernel:
+    print("should calc kernel")
     if options[0][0] == "": # meaning kernel option was passed with no path
         kernel_folder = graph_folder
     else:
@@ -55,6 +56,7 @@ else:
     kernel_folder = ""
 
 if calc_mis: 
+    print("should calc mis")
     if options[1][0] == "": # meaning mis option was passed with no path
         mis_folder = graph_folder
     else:
