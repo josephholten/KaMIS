@@ -81,7 +81,7 @@ for graph_path in graph_paths:
             job_options += ["--output_kernel=" + kernel_path]
 
     if job_str:
-        job_str += "and"
+        job_str += " and "
 
     if calc_mis:
         if os.path.isfile(mis_path) and os.path.getsize(mis_path) > 0:
