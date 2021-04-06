@@ -38,12 +38,10 @@ if len(sys.argv) < 2:
 # regular program
 else:
     graph_folder = os.path.abspath(sys.argv[1])
+    calc_kernel, calc_mis = map(lambda x: len(x) == 1, options)
 options = [[option[option.index('=')+1:] for option in sys.argv[2:] if option.find("=") != -1 and option[:option.index('=')] == specifier] for specifier in ["--kernels", "--mis"]]
 
 assert all(map(lambda x: len(x)<=1, options)), "used options multiple times. exiting."
-
-calc_kernel, calc_mis = map(lambda x: len(x) == 1, options)
-
 assert any([calc_kernel, calc_mis]), "no jobs given. exiting."
 
 if calc_kernel:
