@@ -36,11 +36,12 @@ if len(sys.argv) < 2:
         print(usage_doc)
         sys.exit()
 
+graph_folder = ""
 kernel_folder = ""
 mis_folder = ""
 
 # regular program
-graph_folder = os.path.abspath(sys.argv[1])
+graph_folder = os.path.abspath(sys.argv[1]) if not graph_folder else graph_folder 
 options = [[option[option.index('=')+1:] for option in sys.argv[2:] if option.find("=") != -1 and option[:option.index('=')] == specifier] for specifier in ["--kernels", "--mis"]]
 
 assert all(map(lambda x: len(x)<=1, options)), "used options multiple times. exiting."
