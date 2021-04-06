@@ -8,5 +8,5 @@ for graph in `find $BASEFOLDER -name '*.graph'`; do
     GRAPHNAME=`basename $graph`
     GRAPHNAME=${GRAPHNAME%.*}
     # echo $GRAPHNAME
-    echo "deploy/weighted_branch_reduce $BASEFOLDER/$graph --weight_source=uniform --kernel=$KERNELFOLDER/$GRAPHNAME.uniform.kernel" 
+    echo "deploy/weighted_branch_reduce $graph --weight_source=uniform --kernel=$KERNELFOLDER/$GRAPHNAME.uniform.kernel" 
 done
