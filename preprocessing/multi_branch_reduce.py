@@ -82,14 +82,14 @@ with open("run_kamis_mis", "w") as mis_file, open("run_kamis_kernel", "w") as ke
             if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:   # kernel file does exist and isn't empty
                 print("already calculated kernel")
             else:
-                print("calculating kernel:")
-                kernel_file.write(f"deploy/weighted_branch_reduce {graph_path} --kernel={kernel_path} --time_limit=3600 --weight_source=uniform")
+                print("calculating kernel")
+                kernel_file.write(f"deploy/weighted_branch_reduce {graph_path} --kernel={kernel_path} --time_limit=3600 --weight_source=uniform\n")
 
         if calc_mis:
             mis_path = mis_folder + graph_name + ".MIS"
             if os.path.isfile(mis_path) and os.path.getsize(mis_path) > 0:
                 print("already calculated MIS")
             else:
-                print("calculating MIS:")
-                mis_file.write("deploy/weighted_branch_reduce graph_path --output={mis_path} --time_limit=3600 --weight_source=uniform")
+                print("calculating MIS")
+                mis_file.write("deploy/weighted_branch_reduce graph_path --output={mis_path} --time_limit=3600 --weight_source=uniform\n")
 
