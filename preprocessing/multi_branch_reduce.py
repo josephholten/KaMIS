@@ -63,36 +63,29 @@ else:
     mis_folder = ""
 
 keyword_list = [arg for arg in sys.argv[2:] if not any([arg[:len(specifier)] == specifier for specifier in ["--kernels", "--mis"]])] 
+print("keyword_list:", keyword_list)
 
 graph_paths = search_for_graphs(keyword_list, graph_folder=graph_folder)
+if not graph_paths:
+    print("no graphs found.")
+
 for idx, graph_path in enumerate(graph_paths, start=1):
     print(f"graph #{idx}/{len(graph_paths)}, path: {graph_path}")
     graph_name = graph_path[len(graph_folder):-6] 
-    kernel_path = kernel_folder + graph_name + ".kernel"
-    mis_path = mis_folder + graph_name + ".MIS"
-
-    job_str = ""
-    job_options = []
 
     if calc_kernel:
+        kernel_path = kernel_folder + graph_name + ".kernel"
         if os.path.isfile(kernel_path) and os.path.getsize(kernel_path) > 0:   # kernel file does exist and isn't empty
             print("already calculated kernel")
         else:
-            job_str += "kernel"
-            job_options += ["--kernel=" + kernel_path]
-
-    if job_str:
-        job_str += " and "
+            print("calculating kernel:")
+            subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--kernel=" + kernel_path, "--time_limit=3600", "--weight_source=uniform"])
 
     if calc_mis:
+        mis_path = mis_folder + graph_name + ".MIS"
         if os.path.isfile(mis_path) and os.path.getsize(mis_path) > 0:
             print("already calculated MIS")
         else:
-            job_str += "mis"
-            job_options += ["--output=" + mis_path]
+            print("calculating MIS:")
+            subprocess.run(["deploy/weighted_branch_reduce", graph_path, "--output=" + mis_path, "--time_limit=3600", "--weight_source=uniform"])
 
-    if job_options:
-        print("calculating", job_str)
-        subprocess.run(["deploy/weighted_branch_reduce", graph_path, *job_options, "--time_limit=3600"])
-    else:
-        print("skipping")
