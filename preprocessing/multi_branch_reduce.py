@@ -91,5 +91,5 @@ with open("run_kamis_mis", "w") as mis_file, open("run_kamis_kernel", "w") as ke
                 print("already calculated MIS")
             else:
                 print("calculating MIS")
-                mis_file.write("deploy/weighted_branch_reduce graph_path --output={mis_path} --time_limit=3600 --weight_source=uniform\n")
+                mis_file.write(f"deploy/weighted_branch_reduce {graph_path} --output={mis_path} --time_limit=3600 --weight_source=uniform\n")
 
