@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEFOLDER = "/home/graph_collection/independentset_instances"
+BASEFOLDER="/home/graph_collection/independentset_instances"
 # BASEFOLDER="instances"
 KERNELFOLDER="/home/jholten/kernels"
 
