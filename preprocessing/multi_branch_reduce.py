@@ -41,7 +41,7 @@ kernel_folder = ""
 mis_folder = ""
 
 # regular program
-graph_folder = os.path.abspath(sys.argv[1]) if not graph_folder else graph_folder 
+graph_folder = graph_folder if graph_folder else os.path.abspath(sys.argv[1])
 options = [[option[option.index('=')+1:] for option in sys.argv[2:] if option.find("=") != -1 and option[:option.index('=')] == specifier] for specifier in ["--kernels", "--mis"]]
 
 assert all(map(lambda x: len(x)<=1, options)), "used options multiple times. exiting."
