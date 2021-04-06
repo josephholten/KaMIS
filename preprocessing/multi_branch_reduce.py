@@ -36,6 +36,9 @@ if len(sys.argv) < 2:
         print(usage_doc)
         sys.exit()
 
+kernel_folder = ""
+mis_folder = ""
+
 # regular program
 graph_folder = os.path.abspath(sys.argv[1])
 options = [[option[option.index('=')+1:] for option in sys.argv[2:] if option.find("=") != -1 and option[:option.index('=')] == specifier] for specifier in ["--kernels", "--mis"]]
