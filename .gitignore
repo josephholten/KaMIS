@@ -37,6 +37,7 @@ docs/*
 deploy
 optimized
 instances
+test.py
 
 # Predictions and Models calculated by xgboost
 *.pred
