@@ -83,7 +83,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Gra
     assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
 
     num_of_graphs = len(graph_paths)
-    print("finished loading graph")
+    print("finished loading graph:")
     for idx, (graph_path, mis_path) in enumerate(zip(graph_paths, mis_paths), start=1):
         with open(graph_path) as graph_file:           # read graph ...
             G = metis_format_to_nx(graph_file)
@@ -106,7 +106,7 @@ def get_dmatrix_from_graphs(graphs):
     labels = graphs[0].graph['labels']
 
     num_of_graphs = len(graphs[1:])
-    print("finished calculating features for graph")
+    print("finished calculating features for graph:")
     for idx, g in enumerate(graphs[1:], start=1):
         # append data and labels to np.array
         np.append(feature_data, features(g), axis=0)        
