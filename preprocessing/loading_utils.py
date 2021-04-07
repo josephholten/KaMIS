@@ -82,7 +82,8 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Gra
     # need exactly one mis_path for each graph_path
     assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
 
-    for graph_path, mis_path in zip(graph_paths, mis_paths):
+    num_of_graphs = len(graph_paths)
+    for idx, (graph_path, mis_path) in enumerate(zip(graph_paths, mis_paths), start=1):
         with open(graph_path) as graph_file:           # read graph ...
             G = metis_format_to_nx(graph_file)
         with open(mis_path) as mis_file:               # and labels from resp. files
@@ -90,6 +91,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Gra
         G.graph['path'] = graph_path
         G.graph['kw'] = os.path.basename(graph_path)
         graphs.append(G)
+        print(f"finished loading graph {os.path.basename(graph_path)} ({idx}/{num_of_graphs})")
     return graphs
 
 def get_dmatrix_from_graphs(graphs):
