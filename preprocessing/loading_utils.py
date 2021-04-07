@@ -45,7 +45,7 @@ def metis_format_to_nx(graph_file) -> nx.Graph:
 
     return graph
 
-def search_for_graphs(keyword_list, graph_folder="instances", recursive=True):
+def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, exclude=False):
     """ find matching paths for keywords (or all if no keywords) """ 
 
     graph_folder = os.path.abspath(graph_folder)
@@ -56,7 +56,7 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True):
 
         # add graph file
         if os.path.isfile(path):
-            if path[-6:] == ".graph" and (not keyword_list or any([kw in path for kw in keyword_list])):
+            if path[-6:] == ".graph" and (not keyword_list or (any([kw in path for kw in keyword_list]) != exclude)):
                matched_graphs.append(path) 
 
         # if recursive option is true, then add all graphs from all dictionaries

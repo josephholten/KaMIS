@@ -9,23 +9,12 @@ import xgboost as xgb
 from features import features
 from loading_utils import metis_format_to_nx, search_for_graphs, get_graphs_and_labels, get_dmatrix_from_graphs
 
-training_graphs_paths = search_for_graphs([
-        "jazz",
-        "celegans_met",
-        "email",
-        "adjnoun",
-        "celegansneural",
-        "dolphins",
-        "football",
-        "karate",
-        "lesmis",
-        #"netscience",
-        #"hep-th",
-        #"polbooks",
-        #"power"
-])
+training_graphs_paths = search_for_graphs(["bay", "col", "fla"], exclude=True)
+training_graphs_pahts = filter(lambda path: path[path.rfind("/")+1:] != "ny-sorted.graph", training_graphs_paths)
 
-training_graphs = get_graphs_and_labels(training_graphs_paths)
+label_paths = ["/home/jholten/kernels/" + path[path.rfind("/")+1:-len(".graph")] + ".uniform.mis" for path in training_graphs_paths]
+
+training_graphs = get_graphs_and_labels(training_graphs_paths, label_paths)
 
 if len(training_graphs) < 1:
     print("no training graphs provided, terminating...")
