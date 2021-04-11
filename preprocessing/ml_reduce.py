@@ -44,7 +44,9 @@ for stage in range(1, num_stages+1):
         graph.graph['removals'].append(len(removal))
         print("done.")
 
+    print("recalculating features...")
     data = get_dmatrix_from_graphs(graphs)
+    print("done.")
 
 for graph in graphs:
     print(f"in graph {graph.graph['kw']} removed a total of {sum(graph.graph['removals'])} nodes, \
