@@ -126,12 +126,16 @@ def get_dmatrix_from_graphs(graphs):
         print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
         return np.array([])
 
-    feature_data = features(graphs[0])
-    labels = graphs[0].graph['labels']
-
-    num_of_graphs = len(graphs[1:])
     print("calculating features for graph:")
-    for idx, g in enumerate(graphs[1:], start=1):
+    num_of_graphs = len(graphs)
+    idx = 1
+    g = graphs[0]
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
+    feature_data = features(g)
+    labels = g.graph['labels']
+    print("done.")
+
+    for idx, g in enumerate(graphs[1:], start=2):
         print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
         # append data and labels to np.array
         np.append(feature_data, features(g), axis=0)        

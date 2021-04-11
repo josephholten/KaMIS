@@ -10,6 +10,8 @@ def features(g: nx.Graph) -> np.array:
         return sum(x)/len(x) 
 
     def chi2(obs,exp): 
+        if exp == 0: 
+            return 0
         return ((obs-exp)**2) / exp
 
     deg = dict(g.degree)
