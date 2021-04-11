@@ -59,7 +59,9 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
         weights = weights | 2   # set second-to-least-significant bit
 
     mapping = dict([(node, idx) for idx, node in enumerate(sorted(list(graph.nodes)), start=1)])
-    normalized_graph = nx.relabel_nodes(graph, mapping)
+    normalized_graph = nx.DiGraph(graph)
+    nx.relabel_nodes(graph, mapping, copy=False)
+
 
     with open(path, "w") as graph_file:
         # header
