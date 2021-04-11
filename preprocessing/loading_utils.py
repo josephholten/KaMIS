@@ -124,7 +124,7 @@ def get_dmatrix_from_graphs(graphs):
     graphs = [graph for graph in graphs if graph]
     if not graphs:
         print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
-        return np.array([])
+        return xgb.DMatrix(np.array([]))
 
     print("calculating features for graph:")
     num_of_graphs = len(graphs)
