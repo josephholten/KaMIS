@@ -21,7 +21,7 @@ graphs = get_graphs_and_labels(graph_paths, label_paths)
 
 data = get_dmatrix_from_graphs(graphs)
 
-bst = xgb.Booster({'nthreads': 16})
+bst = xgb.Booster({'nthread': 16})
 bst.load_model("first-10_2021-04-11.model")
 
 num_stages = 5
