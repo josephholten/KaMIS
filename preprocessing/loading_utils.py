@@ -1,4 +1,6 @@
 import os
+import copy
+
 import numpy as np
 import networkx as nx
 import xgboost as xgb
@@ -56,12 +58,15 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
     if 'weight' in next(iter(graph.edges(data=True))):
         weights = weights | 2   # set second-to-least-significant bit
 
+    mapping = dict([(node, idx) for idx, node in enumerate(sorted(list(graph.nodes)), start=1)])
+    normalized_graph = nx.relabel_nodes(graph, mapping)
+
     with open(path, "w") as graph_file:
         # header
-        graph_file.write(f"{graph.number_of_nodes()} {graph.number_of_edges} {weights}")
+        graph_file.write(f"{normalized_graph.number_of_nodes()} {normalized_graph.number_of_edges()} {weights}")
         if not graph.number_of_nodes():  # 0 nodes
             return 
-        lines = '\n'.join(line[:line.find(" ") if line.find(" ") != -1 else len(line)] for line in nx.generate_adjlist(graph))  # FIXME: FATAL, COULD FAIL due to too large graph... :/
+        lines = '\n'.join(line[line.find(" ") if line.find(" ") != -1 else len(line):] for line in nx.generate_adjlist(normalized_graph))  # FIXME: FATAL, COULD FAIL due to too large graph... :/
         graph_file.write(lines)
 
 

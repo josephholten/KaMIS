@@ -15,7 +15,6 @@ graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/indepen
 label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path)[:-6] + ".uniform.mis" for path in graph_paths]
 
 OUTPUT_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
-OUTPUT_FOLDER = os.path.abspath(OUTPUT_FOLDER)
 
 graphs = get_graphs_and_labels(graph_paths, label_paths)
 
@@ -25,7 +24,7 @@ bst = xgb.Booster({'nthread': 16})
 bst.load_model("first-10_2021-04-11.model")
 
 num_stages = 5
-q = 0.95   # confidence niveau
+q = 0.98   # confidence niveau
 
 for graph in graphs:
     graph.graph['removals'] = []
