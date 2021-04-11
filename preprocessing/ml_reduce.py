@@ -25,7 +25,7 @@ bst = xgb.Booster({'nthread': 16})
 bst.load_model("first-10_2021-04-11.model")
 
 num_stages = 5
-q = 0.9   # confidence niveau
+q = 0.95   # confidence niveau
 
 for graph in graphs:
     graph.graph['removals'] = []
