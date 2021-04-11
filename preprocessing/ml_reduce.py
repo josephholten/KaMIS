@@ -43,7 +43,7 @@ for stage in range(1, num_stages+1):
         graph.graph['labels'] = graph.graph['labels'][np.where(label_pred > q)[0]]  # remove labels of removed nodes in test graph
         graph.graph['removals'].append(len(removal))
 
-    dtest = get_dmatrix_from_graphs(graphs)
+    data = get_dmatrix_from_graphs(graphs)
 
 for graph in graphs:
     print("in graph", graph.graph['kw'], "removed a total of", sum(graph.graph['removals']), "nodes", "(", *graph.graph['removals'], ")")
