@@ -7,8 +7,10 @@ from typing import List
 
 from features import features
 
-def metis_format_to_nx(graph_file) -> nx.Graph: 
+def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph: 
     """ parses METIS graph format into networkx graph"""
+
+    assert weights in {"uniform", "source"}, "param 'weights' needs to be either 'uniform' or 'source'"
 
     # read header
     header = graph_file.readline().split()
@@ -32,9 +34,10 @@ def metis_format_to_nx(graph_file) -> nx.Graph:
 
         # based on weights param add the neighbours (and their weights) correctly
         if weights & 2 == 2:  # graph has node weights
-            graph.nodes[v]['weight'] = line.pop(0)
+            w = line.pop(0)
+            graph.nodes[v]['weight'] = w if weights == "source" else 1
         if weights & 1 == 1:  # graph has edge weights
-            edges = zip(len(line)//2 * [v], line[0::2], [{'weight': w} for w in line[1::2]])      
+            edges = zip(len(line)//2 * [v], line[0::2], [{'weight': w if weights == "source" else 1} for w in line[1::2]])      
         else:                 # no edge weights
             edges = list(zip(len(line) * [v], line[0:]))
         graph.add_edges_from(edges)
@@ -44,6 +47,22 @@ def metis_format_to_nx(graph_file) -> nx.Graph:
     assert len(graph.edges) == header[1], f"{os.path.basename(graph_file.name)} # of edges in graph: {len(graph.edges)}, # of edges in header: {int(header[1])}" 
 
     return graph
+
+def write_nx_in_metis_format(graph: nx.Graph, path):
+    # type of weights
+    weights = 0
+    if 'weight' in next(iter(graph.nodes(data=True))):
+        weights = weights | 1   # set least-significant bit
+    if 'weight' in next(iter(graph.edges(data=True))):
+        weights = weights | 2   # set second-to-least-significant bit
+
+    with open(path, "w") as graph_file:
+        # header
+        graph_file.write(f"{graph.number_of_nodes()} {graph.number_of_edges} {weights}")
+        lines = '\n'.join(line.split(" ", 1)[1] for line in nx.generate_adjlist(graph))  # FIXME: FATAL, COULD FAIL due to too large graph... :/
+        graph_file.write(lines)
+
+
 
 def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, exclude=False):
     """ find matching paths for keywords (or all if no keywords) """ 
