@@ -47,7 +47,8 @@ for stage in range(1, num_stages+1):
     data = get_dmatrix_from_graphs(graphs)
 
 for graph in graphs:
-    print("in graph", graph.graph['kw'], "removed a total of", sum(graph.graph['removals']), "nodes", "(", *graph.graph['removals'], ")")
+    print(f"in graph {graph.graph['kw']} removed a total of {sum(graph.graph['removals'])} nodes, \
+            {sum(graph.graph['removals'])/graph.number_of_nodes * 100}%", "(", *graph.graph['removals'], ")")
     ml_reduction_path = OUTPUT_FOLDER + graph.graph['kw'][:-6] + ".ml_kernel"
     print(f"writing {graph.graph['kw']} to {ml_reduction_path} ...")
     write_nx_in_metis_format(graph, ml_reduction_path)
