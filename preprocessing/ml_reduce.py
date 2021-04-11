@@ -25,7 +25,7 @@ bst = xgb.Booster({'nthread': 16})
 bst.load_model("first-10_2021-04-11.model")
 
 num_stages = 5
-q = 0.7   # confidence niveau
+q = 0.9   # confidence niveau
 
 for graph in graphs:
     graph.graph['removals'] = []
@@ -38,7 +38,7 @@ for stage in range(1, num_stages+1):
 
     for graph in graphs:
         print(f"{graph.graph['kw']} ...")
-        removal = np.array(graph.nodes)[label_pred <= q]
+        removal = np.array(graph.nodes)[label_pred <= 1 - q]
         graph.remove_nodes_from(removal)
         graph.graph['labels'] = graph.graph['labels'][np.where(label_pred > q)[0]]  # remove labels of removed nodes in test graph
         graph.graph['removals'].append(len(removal))
