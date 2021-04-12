@@ -68,7 +68,7 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
         graph_file.write(f"{normalized_graph.number_of_nodes()} {graph.number_of_edges()} {weights}\n")
         if not graph.number_of_nodes():  # 0 nodes
             return 
-        lines = '\n'.join(" ".join(sorted(line.split(" ")[1:])) for line in nx.generate_adjlist(normalized_graph)) # FIXME: FATAL, COULD FAIL due to too large graph... :/
+        lines = '\n'.join(" ".join(sorted(line.split(" ")[1:], key=lambda x: int(x))) for line in nx.generate_adjlist(normalized_graph)) # FIXME: FATAL, COULD FAIL due to too large graph... :/
         graph_file.write(lines)
 
 
