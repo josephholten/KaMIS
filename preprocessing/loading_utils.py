@@ -68,7 +68,7 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
         graph_file.write(f"{normalized_graph.number_of_nodes()} {graph.number_of_edges()} {weights}\n")
         if not graph.number_of_nodes():  # 0 nodes
             return 
-        lines = ''.join(line[line.find(" ") if line.find(" ") != -1 else len(line):] + "\n" for line in nx.generate_adjlist(normalized_graph)) # FIXME: FATAL, COULD FAIL due to too large graph... :/
+        lines = '\n'.join(line[line.find(" ")+1 if line.find(" ") != -1 else len(line):] for line in nx.generate_adjlist(normalized_graph)) # FIXME: FATAL, COULD FAIL due to too large graph... :/
         graph_file.write(lines)
 
 
@@ -155,7 +155,6 @@ def get_dmatrix_from_graphs(graphs):
 
 # testing
 if __name__ == "__main__":
-    # with open("instances/karate.graph") as graph_file:
-    #     G = metis_format_to_nx(graph_file)
-    # print(search_for_graphs(["adjnoun.graph", "astro"]))
-    pass
+    with open("instances/karate.graph") as graph_file:
+        G = metis_format_to_nx(graph_file)
+    write_nx_in_metis_format(G, "instances/karate_rewritten.graph")

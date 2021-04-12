@@ -30,7 +30,7 @@ for graph in graphs:
     graph.graph['removals'] = []
     graph.graph['old_number_of_nodes'] = graph.number_of_nodes()
 
-print("reducing graphs")
+print("reducing graphs:")
 for stage in range(1, num_stages+1):
     print(f"stage {stage}")
     label_pred = bst.predict(data)
