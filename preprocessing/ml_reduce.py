@@ -1,5 +1,6 @@
 import numpy as np
 import xgboost as xgb
+import networkx as nx
 
 from features import features
 from loading_utils import metis_format_to_nx, write_nx_in_metis_format, search_for_graphs, get_graphs_and_labels, get_dmatrix_from_graphs
@@ -46,6 +47,13 @@ for stage in range(1, num_stages+1):
 
     print("recalculating features...")
     data = get_dmatrix_from_graphs(graphs)
+    print("done.")
+
+# removing self loops
+print("removing self loops")
+for graph in graphs:
+    print(f"{graph.graph['kw']} ...")
+    graph.remove_nodes_from(nx.selfloop_edges(graph))
     print("done.")
 
 for graph in graphs:
