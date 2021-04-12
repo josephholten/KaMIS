@@ -54,7 +54,7 @@ print("removing self loops")
 for graph in graphs:
     print(f"{graph.graph['kw']} ...")
     self_loops = nx.selfloop_edges(graph)
-    print(f"self loops {self_loops}")
+    print(f"self loops {list(self_loops)}")
     graph.remove_edges_from(self_loops)
     print("done.")
 
