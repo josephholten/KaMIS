@@ -53,7 +53,7 @@ for stage in range(1, num_stages+1):
 print("removing self loops")
 for graph in graphs:
     print(f"{graph.graph['kw']} ...")
-    graph.remove_nodes_from(nx.selfloop_edges(graph))
+    graph.remove_edges_from(nx.selfloop_edges(graph))
     print("done.")
 
 for graph in graphs:
