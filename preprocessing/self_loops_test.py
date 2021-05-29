@@ -20,7 +20,7 @@ def remove_self_loop(graph: nx.Graph, verbose = True):
                 print(node)
 
 
-with open("/home/jholten/kernels/olafu.mtx.ml_kernel") as graph_file:
+with open("/home/jholten/kernels/ml_reduce_kernels/olafu.mtx.ml_kernel") as graph_file:
     graph = metis_format_to_nx(graph_file)
     test_self_loop(graph, True)
     remove_self_loop(graph, True)
