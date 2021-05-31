@@ -47,10 +47,10 @@ def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
         graph.add_edges_from(edges)
 
     # assert that the added number of nodes and edges are the same as specified in the file
-    assert len(graph.nodes) == header[
-        0], f"{os.path.basename(graph_file.name)} # of nodes in graph: {len(graph.nodes)}, # of nodes in header: {int(header[0])}"  # header: n m f       with f being one of: (0), 1, 10, 11
-    assert len(graph.edges) == header[
-        1], f"{os.path.basename(graph_file.name)} # of edges in graph: {len(graph.edges)}, # of edges in header: {int(header[1])}"
+    assert len(graph.nodes) == header[0],\
+        f"{os.path.basename(graph_file.name)} # of nodes in graph: {len(graph.nodes)}, # of nodes in header: {int(header[0])}"  # header: n m f       with f being one of: (0), 1, 10, 11
+    assert len(graph.edges) == header[1], \
+        f"{os.path.basename(graph_file.name)} # of edges in graph: {len(graph.edges)}, # of edges in header: {int(header[1])}"
 
     return graph
 
@@ -135,7 +135,25 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Gra
     return graphs
 
 
-def get_dmatrix_from_graphs(graphs):
+def get_graphs(graph_paths: List[str]) -> List[nx.Graph]:
+
+    graphs = []
+
+    num_of_graphs = len(graph_paths)
+    print("loading graph:")
+    for idx, graph_path in enumerate(graph_paths, start=1):
+        print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
+        with open(graph_path) as graph_file:  # read graph ...
+            G = metis_format_to_nx(graph_file)
+        G.graph['path'] = graph_path
+        G.graph['kw'] = os.path.basename(graph_path)
+        graphs.append(G)
+        print("done.")
+
+    return graphs
+
+
+def get_dmatrix_from_graphs(graphs, no_labels=False):
     # initialize np.array feature_data and labels through first graph
     graphs = [graph for graph in graphs if graph]
     if not graphs:
@@ -155,13 +173,15 @@ def get_dmatrix_from_graphs(graphs):
         print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
         # append data and labels to np.array
         np.append(feature_data, features(g), axis=0)
-        np.append(labels, g.graph['labels'])
+        if not no_labels:
+            np.append(labels, g.graph['labels'])
         print("done.")
-    return xgb.DMatrix(np.array(feature_data), label=np.array(labels))
+
+    return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(np.array(feature_data))
 
 
 # testing
 if __name__ == "__main__":
-    with open("instances/karate.graph") as graph_file:
+    with open("../instances/karate.graph") as graph_file:
         G = metis_format_to_nx(graph_file)
-    write_nx_in_metis_format(G, "instances/karate_rewritten.graph")
+    write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")
