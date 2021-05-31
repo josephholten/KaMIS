@@ -166,7 +166,8 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     g = graphs[0]
     print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
     feature_data = features(g)
-    labels = g.graph['labels']
+    if not no_labels:
+        labels = g.graph['labels']
     print("done.")
 
     for idx, g in enumerate(graphs[1:], start=2):
