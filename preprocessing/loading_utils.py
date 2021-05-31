@@ -74,7 +74,7 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
             return
 
             # FIXME: FATAL, COULD FAIL due to too large graph... :/
-        lines = '\n'.join(" ".join(map(str, sorted(list(graph.neighbors(node))))) for node in graph.nodes)
+        lines = '\n'.join(" ".join(map(str, sorted(list(normalized_graph.neighbors(node))))) for node in normalized_graph.nodes)
         graph_file.write(lines)
 
 
