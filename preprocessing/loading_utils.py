@@ -1,5 +1,6 @@
 import os
 import copy
+from pprint import pprint
 
 import numpy as np
 import networkx as nx
@@ -47,7 +48,7 @@ def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
         graph.add_edges_from(edges)
 
     # assert that the added number of nodes and edges are the same as specified in the file
-    assert len(graph.nodes) == header[0],\
+    assert len(graph.nodes) == header[0], \
         f"{os.path.basename(graph_file.name)} # of nodes in graph: {len(graph.nodes)}, # of nodes in header: {int(header[0])}"  # header: n m f       with f being one of: (0), 1, 10, 11
     assert len(graph.edges) == header[1], \
         f"{os.path.basename(graph_file.name)} # of edges in graph: {len(graph.edges)}, # of edges in header: {int(header[1])}"
@@ -64,18 +65,16 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
         weights = weights | 2  # set second-to-least-significant bit
 
     mapping = dict([(node, idx) for idx, node in enumerate(sorted(list(graph.nodes)), start=1)])
-    normalized_graph = nx.DiGraph(graph)
-    nx.relabel_nodes(normalized_graph, mapping, copy=False)
+    normalized_graph = nx.relabel_nodes(graph, mapping)
 
     with open(path, "w") as graph_file:
         # header
-        graph_file.write(f"{normalized_graph.number_of_nodes()} {graph.number_of_edges()} {weights}\n")
-        if not graph.number_of_nodes():  # 0 nodes
+        graph_file.write(f"{normalized_graph.number_of_nodes()} {normalized_graph.number_of_edges()} {weights}\n")
+        if not normalized_graph.number_of_nodes():  # 0 nodes
             return
 
             # FIXME: FATAL, COULD FAIL due to too large graph... :/
-        lines = '\n'.join(" ".join(sorted(line.split(" ")[1:], key=lambda x: int(x))) for line in
-                          nx.generate_adjlist(normalized_graph))
+        lines = '\n'.join(" ".join(map(str, sorted(list(graph.neighbors(node))))) for node in G.nodes)
         graph_file.write(lines)
 
 
@@ -136,7 +135,6 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Gra
 
 
 def get_graphs(graph_paths: List[str]) -> List[nx.Graph]:
-
     graphs = []
 
     num_of_graphs = len(graph_paths)
@@ -178,11 +176,12 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
             np.append(labels, g.graph['labels'])
         print("done.")
 
-    return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(np.array(feature_data))
+    return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
+        np.array(feature_data))
 
 
 # testing
 if __name__ == "__main__":
     with open("../instances/karate.graph") as graph_file:
         G = metis_format_to_nx(graph_file)
-    write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")
+        write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")
