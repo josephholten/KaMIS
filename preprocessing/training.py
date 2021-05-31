@@ -37,4 +37,4 @@ param = {'eta': 0.4, 'max_depth': 5, 'objective':'binary:logistic', 'eval_metric
 
 print("starting training...")
 bst = xgb.train(param, dtrain, num_round, evallist)
-bst.save_model("first-10_" + date.today() + ".model")
+bst.save_model("" + str(date.today()) + ".model")
