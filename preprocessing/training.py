@@ -15,10 +15,10 @@ training_graphs_paths = list(filter(lambda path: path[path.rfind("/")+1:] != "ny
 training_graphs_paths = list(filter(lambda path: path[path.rfind("/")+1:] != "fla-sorted.graph", training_graphs_paths))
 training_graphs_paths = list(filter(lambda path: path[path.rfind("/")+1:] != "col-sorted.graph", training_graphs_paths))
 training_graphs_paths = list(filter(lambda path: path[path.rfind("/")+1:] != "bay-sorted.graph", training_graphs_paths))
-training_graphs_paths = training_graphs_paths[:40]
+# training_graphs_paths = training_graphs_paths[:40]
 
 label_paths = ["/home/jholten/mis/kamis_results/" + path[path.rfind("/")+1:-len(".graph")] + ".uniform.mis" for path in training_graphs_paths]
-label_paths = label_paths[:40]
+# label_paths = label_paths[:40]
 
 # print(training_graphs_paths)
 # print(label_paths)
