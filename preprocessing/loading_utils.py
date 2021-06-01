@@ -32,7 +32,6 @@ def pool_map_tqdm(func, argument_list):
 
 def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
     """ parses METIS graph format into networkx graph"""
-    # TODO: use numpy loadtxt to load graph_file as matrix and then process each row of the matrix
 
     assert weights in {"uniform", "source"}, "param 'weights' needs to be either 'uniform' or 'source'"
 
@@ -162,12 +161,52 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
         return pool.starmap(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths, itertools.cycle([len(graph_paths)]), itertools.cycle([no_labels])))
 
 
-def features_helper(idx, g, num_of_graphs) -> np.array:
+def features_log(idx, g, num_of_graphs) -> np.array:
     print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ...")
-    f = features(g)
-    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done.")
-    return f
 
+    """ calculates feature matrix, where each row is a feature vector for a specific node"""
+
+    def average(x):
+        if len(x) == 0:
+            return 0
+        return sum(x) / len(x)
+
+    def chi2(obs, exp):
+        if exp == 0:
+            return 0
+        return ((obs - exp) ** 2) / exp
+
+    deg = dict(g.degree)
+    avg_deg = average(deg.values())
+    lcc = nx.clustering(g)
+    avg_lcc = average(lcc.values())
+    eigencentrality = nx.algorithms.centrality.eigenvector_centrality_numpy(g)
+    greedy_coloring = nx.greedy_color(g)
+    greedy_chr_nmbr = len(set(greedy_coloring.values()))
+
+    def f(v):
+        """ calculates the feature vector """
+
+        # assert type(v) == type(next(g.__iter__())), "possibly there was passed a wrong type of node"
+        return np.array([
+            # graph-theoretical features
+            g.number_of_nodes(),  # F1: n, number of nodes
+            g.number_of_edges(),  # F2: m, number of edges
+            deg[v],  # F3: vertex degree
+            lcc[v],  # F4: lcc, local clustering coefficient of node v
+            eigencentrality[v],  # F5: eigencentrality
+            # stat. features
+            chi2(deg[v], avg_deg),  # F6: chi2 of vertex deg
+            average([chi2(deg[u], avg_deg) for u in g.neighbors(v)]),  # F7: average chi2 of deg of neighbours
+            chi2(lcc[v], avg_lcc),  # F8: chi2 of lcc of vertex
+            average([chi2(lcc[u], avg_lcc) for u in g.neighbors(v)]),  # F9: average chi2 of lcc of neighbours
+            len({greedy_coloring[u] for u in g.neighbors(v)}) / greedy_chr_nmbr
+            # F10: estimate for local chromatic density
+        ])
+
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done.")
+
+    return f(np.array(g.nodes)).T
 
 def get_dmatrix_from_graphs(graphs, no_labels=False):
     # initialize np.array feature_data and labels through first graph
@@ -180,7 +219,7 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     print("calculating features for graph:")
 
     with Pool(cpu_count()) as pool:
-        feature_data = np.array(pool.starmap(features_helper, zip(range(1, len(graphs)), graphs, itertools.cycle([len(graphs)])))).T
+        feature_data = np.array(pool.starmap(features_log, zip(range(1, len(graphs)), graphs, itertools.cycle([len(graphs)])))).T
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
