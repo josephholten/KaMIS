@@ -127,10 +127,11 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
 def load_graph(idx, graph_path, mis_path, num_of_graphs, no_labels):
+    print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ...")
+    
     with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
         graph = metis_format_to_nx(graph_file)
 
-    print(f"{graph.graph['kw']} ({idx}/{num_of_graphs}) ...")
     if not no_labels:
         graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
 
