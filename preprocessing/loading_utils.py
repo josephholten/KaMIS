@@ -1,7 +1,6 @@
 import itertools
 import os
 import copy
-import time
 from pprint import pprint
 from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
@@ -16,7 +15,6 @@ from features import features
 
 
 def pool_map_tqdm(func, argument_list):
-
     pool = Pool(processes=cpu_count())
 
     jobs = [pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple) else pool.apply_async(func=func, args=(argument,)) for argument in argument_list]
@@ -154,7 +152,8 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     num_of_graphs = len(graph_paths)
     print("loading graph:")
 
-    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths))
+    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
+                                         itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
 
 
 def features_helper(g) -> np.array:
@@ -181,8 +180,10 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
         np.array(feature_data))
 
 
+
 # testing
 if __name__ == "__main__":
-    """ heklje with open("../instances/karate.graph") as graph_file:
+ with open("../instances/karate.graph") as graph_file:
         G = metis_format_to_nx(graph_file)
         write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")"""
+    pool_map_tqdm()
