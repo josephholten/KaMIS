@@ -152,8 +152,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     num_of_graphs = len(graph_paths)
     print("loading graph:")
 
-    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
-                                         itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
+    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths))
 
 
 def features_helper(g) -> np.array:
