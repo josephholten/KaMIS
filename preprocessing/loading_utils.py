@@ -17,7 +17,11 @@ from features import features
 def pool_map_tqdm(func, argument_list):
     pool = Pool(processes=cpu_count())
 
-    jobs = [pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple) else pool.apply_async(func=func, args=(argument,)) for argument in argument_list]
+    jobs = [
+        pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple) else pool.apply_async(func=func,
+                                                                                                            args=(
+                                                                                                            argument,))
+        for argument in argument_list]
     pool.close()
     result_list_tqdm = []
     for job in tqdm(jobs):
@@ -28,7 +32,7 @@ def pool_map_tqdm(func, argument_list):
 
 def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
     """ parses METIS graph format into networkx graph"""
-    #TODO: use numpy loadtxt to load graph_file as matrix and then process each row of the matrix
+    # TODO: use numpy loadtxt to load graph_file as matrix and then process each row of the matrix
 
     assert weights in {"uniform", "source"}, "param 'weights' needs to be either 'uniform' or 'source'"
 
@@ -50,8 +54,6 @@ def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
     # iterate over lines (which represent a node)
     for v, line in enumerate(graph_file, 1):
         line = list(map(int, line.split()))
-        edges = []
-
         # based on weights param add the neighbours (and their weights) correctly
         if weights & 2 == 2:  # graph has node weights
             w = line.pop(0)
@@ -124,14 +126,18 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-def load_graph(graph_path, mis_path, no_labels):
+def load_graph(idx, graph_path, mis_path, num_of_graphs, no_labels):
     with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
         graph = metis_format_to_nx(graph_file)
-        if not no_labels:
-            graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
+
+    print(f"{graph.graph['kw']} ({idx}/{num_of_graphs}) ...")
+    if not no_labels:
+        graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
 
     graph.graph['path'] = graph_path
     graph.graph['kw'] = os.path.basename(graph_path)
+
+    print(f"{graph.graph['kw']} ({idx}/{num_of_graphs}) done.")
     return graph
 
 
@@ -150,11 +156,15 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
         assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
 
     print("loading graphs:")
-    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths))
+    with Pool(cpu_count()) as pool:
+        return pool.starmap(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths, itertools.cycle([len(graph_paths)]), itertools.cycle([no_labels])))
 
 
-def features_helper(g) -> np.array:
-    return features(g)
+def features_helper(idx, g, num_of_graphs) -> np.array:
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ...")
+    f = features(g)
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done.")
+    return f
 
 
 def get_dmatrix_from_graphs(graphs, no_labels=False):
@@ -166,11 +176,13 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
 
     # asynchronously calculate features for each graph and then
     print("calculating features for graph:")
-    feature_data = np.array(pool_map_tqdm(features_helper, graphs)).T
-    # flatten the array along the last axis (i.e. list of matrices are appended to each other)
-    feature_data.reshape(-1, feature_data.shape[-1])
-    # do the same for label array (simpler since it only is a matrix)
-    labels = np.array(pool_map_tqdm(lambda g: g.graph['labels'], graphs)).flatten()
+
+    with Pool(cpu_count()) as pool:
+        feature_data = np.array(pool.starmap(features_helper, zip(range(1, len(graphs)), graphs, itertools.cycle([len(graphs)])))).T
+        # flatten the array along the last axis (i.e. list of matrices are appended to each other)
+        feature_data.reshape(-1, feature_data.shape[-1])
+        # do the same for label array (simpler since it only is a matrix)
+        labels = np.array(pool.map(lambda g: g.graph['labels'], graphs)).flatten()
 
     return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
         np.array(feature_data))
