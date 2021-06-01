@@ -32,6 +32,7 @@ def pool_map_tqdm(func, argument_list):
 
 def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
     """ parses METIS graph format into networkx graph"""
+    # TODO: use numpy loadtxt to load graph_file as matrix and then process each row of the matrix
 
     assert weights in {"uniform", "source"}, "param 'weights' needs to be either 'uniform' or 'source'"
 
@@ -178,11 +179,12 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     # asynchronously calculate features for each graph and then
     print("calculating features for graph:")
 
-    feature_data = np.array(map(features_helper, range(1, len(graphs)+1), graphs, itertools.cycle([len(graphs)]))).T
-    # flatten the array along the last axis (i.e. list of matrices are appended to each other)
-    feature_data.reshape(-1, feature_data.shape[-1])
-    # do the same for label array (simpler since it only is a matrix)
-    labels = np.array(map(lambda g: g.graph['labels'], graphs)).flatten()
+    with Pool(cpu_count()) as pool:
+        feature_data = np.array(pool.starmap(features_helper, zip(range(1, len(graphs)), graphs, itertools.cycle([len(graphs)])))).T
+        # flatten the array along the last axis (i.e. list of matrices are appended to each other)
+        feature_data.reshape(-1, feature_data.shape[-1])
+        # do the same for label array (simpler since it only is a matrix)
+        labels = np.array(pool.map(lambda g: g.graph['labels'], graphs)).flatten()
 
     return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
         np.array(feature_data))
