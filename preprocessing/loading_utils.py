@@ -110,6 +110,23 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
+def load_graph_log(idx_graph_mis, num_of_graphs, no_labels):
+    idx, (graph_path, mis_path) = idx_graph_mis
+
+    print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
+
+    with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
+        graph = metis_format_to_nx(graph_file)
+        if not no_labels:
+            graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
+
+    graph.graph['path'] = graph_path
+    graph.graph['kw'] = os.path.basename(graph_path)
+
+    print("done.")
+    return graph
+
+
 def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=False) -> List[nx.Graph]:
     """ get list of nx.Graphs (each with their associated MIS labels) from a list of paths """
 
@@ -127,24 +144,19 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     num_of_graphs = len(graph_paths)
     print("loading graph:")
 
-    def load_graph_log(idx_graph_mis):
-        idx, (graph_path, mis_path) = idx_graph_mis
-
-        print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
-
-        with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
-            graph = metis_format_to_nx(graph_file)
-            if not no_labels:
-                graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
-
-        graph.graph['path'] = graph_path
-        graph.graph['kw'] = os.path.basename(graph_path)
-
-        print("done.")
-        return graph
-
     with Pool(cpu_count()) as pool:
-        return pool.map(load_graph_log, enumerate(zip(graph_paths, mis_paths)))
+        return pool.map(load_graph_log, zip(enumerate(zip(graph_paths, mis_paths)), itertools.cycle([num_of_graphs]),
+                                            itertools.cycle([no_labels])))
+
+
+def features_log(idx_and_graph: tuple[int, nx.Graph], num_of_graphs) -> np.array:
+    idx, g = idx_and_graph
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
+
+    f = features(g).T
+
+    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done. ")
+    return f
 
 
 def get_dmatrix_from_graphs(graphs, no_labels=False):
@@ -156,19 +168,10 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
 
     num_of_graphs = len(graphs)
 
-    def features_log(idx_and_graph: tuple[int, nx.Graph]) -> np.array:
-        idx, g = idx_and_graph
-        print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
-
-        f = features(g).T
-
-        print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done. ")
-        return f
-
     # asynchronously calculate features for each graph and then
     with Pool(cpu_count()) as pool:
         print("calculating features for graph:")
-        feature_data = np.array(pool.map(features_log, enumerate(graphs))).T
+        feature_data = np.array(pool.map(features_log, zip(enumerate(graphs), itertools.cycle([num_of_graphs])))).T
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
