@@ -154,8 +154,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     num_of_graphs = len(graph_paths)
     print("loading graph:")
 
-    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
-                                         itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
+    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths))
 
 
 def features_helper(g) -> np.array:
@@ -176,7 +175,7 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
-        labels = np.array(pool.starmap(lambda g: g.graph['labels'], graphs)).flatten()
+        labels = np.array(pool_map_tqdm(lambda g: g.graph['labels'], graphs)).flatten()
 
     return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
         np.array(feature_data))
