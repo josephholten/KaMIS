@@ -1,3 +1,4 @@
+import itertools
 import os
 import copy
 from pprint import pprint
@@ -109,48 +110,41 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-def get_graphs_and_labels(graph_paths: List[str], mis_paths=None) -> List[nx.Graph]:
+def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=False) -> List[nx.Graph]:
     """ get list of nx.Graphs (each with their associated MIS labels) from a list of paths """
-
-    graphs = []
 
     # if no mis_paths specified, then assume they are in the same location as the graphs, but with the ".MIS" ending
     if not mis_paths:
-        mis_paths = [graph_path[:-6] + ".MIS" for graph_path in graph_paths]
+        if not no_labels:
+            mis_paths = [graph_path[:-6] + ".MIS" for graph_path in graph_paths]
+        else:
+            mis_paths = itertools.cycle([None])
 
     # need exactly one mis_path for each graph_path
-    assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
+    if not no_labels:
+        assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
 
     num_of_graphs = len(graph_paths)
     print("loading graph:")
-    for idx, (graph_path, mis_path) in enumerate(zip(graph_paths, mis_paths), start=1):
+
+    def load_graph_log(idx_graph_mis):
+        idx, (graph_path, mis_path) = idx_graph_mis
+
         print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
-        with open(graph_path) as graph_file:  # read graph ...
-            G = metis_format_to_nx(graph_file)
-        with open(mis_path) as mis_file:  # and labels from resp. files
-            G.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
-        G.graph['path'] = graph_path
-        G.graph['kw'] = os.path.basename(graph_path)
-        graphs.append(G)
+
+        with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
+            graph = metis_format_to_nx(graph_file)
+            if not no_labels:
+                graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
+
+        graph.graph['path'] = graph_path
+        graph.graph['kw'] = os.path.basename(graph_path)
+
         print("done.")
-    return graphs
+        return graph
 
-
-def get_graphs(graph_paths: List[str]) -> List[nx.Graph]:
-    graphs = []
-
-    num_of_graphs = len(graph_paths)
-    print("loading graph:")
-    for idx, graph_path in enumerate(graph_paths, start=1):
-        print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
-        with open(graph_path) as graph_file:  # read graph ...
-            G = metis_format_to_nx(graph_file)
-        G.graph['path'] = graph_path
-        G.graph['kw'] = os.path.basename(graph_path)
-        graphs.append(G)
-        print("done.")
-
-    return graphs
+    with Pool(cpu_count()) as pool:
+        return pool.map(load_graph_log, enumerate(zip(graph_paths, mis_paths)))
 
 
 def get_dmatrix_from_graphs(graphs, no_labels=False):

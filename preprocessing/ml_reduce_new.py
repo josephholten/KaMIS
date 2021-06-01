@@ -4,7 +4,7 @@ import networkx as nx
 
 from features import features
 from loading_utils import metis_format_to_nx, write_nx_in_metis_format, search_for_graphs, get_graphs_and_labels, \
-    get_dmatrix_from_graphs, get_graphs
+    get_dmatrix_from_graphs
 
 from datetime import date
 import os
@@ -18,7 +18,7 @@ graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/indepen
 
 OUTPUT_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
 
-graphs = get_graphs(graph_paths)
+graphs = get_graphs_and_labels(graph_paths, no_labels=True)
 
 data = get_dmatrix_from_graphs(graphs, no_labels=True)
 
