@@ -1,6 +1,7 @@
 import os
 import copy
 from pprint import pprint
+from multiprocessing import Pool, cpu_count
 
 import numpy as np
 import networkx as nx
@@ -74,7 +75,8 @@ def write_nx_in_metis_format(graph: nx.Graph, path):
             return
 
             # FIXME: FATAL, COULD FAIL due to too large graph... :/
-        lines = '\n'.join(" ".join(map(str, sorted(list(normalized_graph.neighbors(node))))) for node in normalized_graph.nodes)
+        lines = '\n'.join(
+            " ".join(map(str, sorted(list(normalized_graph.neighbors(node))))) for node in normalized_graph.nodes)
         graph_file.write(lines)
 
 
@@ -158,23 +160,25 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
         print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
         return xgb.DMatrix(np.array([[]]))
 
-    print("calculating features for graph:")
     num_of_graphs = len(graphs)
-    idx = 1
-    g = graphs[0]
-    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
-    feature_data = features(g)
-    if not no_labels:
-        labels = g.graph['labels']
-    print("done.")
 
-    for idx, g in enumerate(graphs[1:], start=2):
+    def features_log(idx_and_graph: tuple[int, nx.Graph]) -> np.array:
+        idx, g = idx_and_graph
         print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
-        # append data and labels to np.array
-        np.append(feature_data, features(g), axis=0)
-        if not no_labels:
-            np.append(labels, g.graph['labels'])
-        print("done.")
+
+        f = features(g).T
+
+        print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done. ")
+        return f
+
+    # asynchronously calculate features for each graph and then
+    with Pool(cpu_count()) as pool:
+        print("calculating features for graph:")
+        feature_data = np.array(pool.map(features_log, enumerate(graphs))).T
+        # flatten the array along the last axis (i.e. list of matrices are appended to each other)
+        feature_data.reshape(-1, feature_data.shape[-1])
+        # do the same for label array (simpler since it only is a matrix)
+        labels = np.array(pool.map(lambda g: g.graph['labels'], graphs)).flatten()
 
     return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
         np.array(feature_data))
