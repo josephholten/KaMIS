@@ -110,9 +110,7 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-def load_graph_log(idx_graph_mis, num_of_graphs, no_labels):
-    idx, (graph_path, mis_path) = idx_graph_mis
-
+def load_graph_log(idx, graph_path, mis_path, num_of_graphs, no_labels):
     print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
 
     with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
@@ -145,12 +143,11 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     print("loading graph:")
 
     with Pool(cpu_count()) as pool:
-        return pool.map(load_graph_log, zip(enumerate(zip(graph_paths, mis_paths)), itertools.cycle([num_of_graphs]),
-                                            itertools.cycle([no_labels])))
+        return pool.map(load_graph_log, zip(range(1, len(graph_paths)+1), graph_paths, mis_paths,
+                                            itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
 
 
-def features_log(idx_and_graph, num_of_graphs) -> np.array:
-    idx, g = idx_and_graph
+def features_log(idx, g, num_of_graphs) -> np.array:
     print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
 
     f = features(g).T
@@ -171,7 +168,7 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     # asynchronously calculate features for each graph and then
     with Pool(cpu_count()) as pool:
         print("calculating features for graph:")
-        feature_data = np.array(pool.map(features_log, zip(enumerate(graphs), itertools.cycle([num_of_graphs])))).T
+        feature_data = np.array(pool.map(features_log, zip(range(1,len(graphs)+1), graphs, itertools.cycle([num_of_graphs])))).T
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
