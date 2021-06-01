@@ -2,6 +2,7 @@ import itertools
 import os
 import copy
 from pprint import pprint
+from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
 
 import numpy as np
@@ -13,8 +14,22 @@ from typing import List
 from features import features
 
 
+def pool_map_tqdm(func, argument_list):
+    with Pool(processes=cpu_count()) as pool:
+        jobs = [pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple)
+                else pool.apply_async(func=func, args=(argument,))
+                for argument in argument_list]
+
+    result_list = []
+    for job in tqdm(jobs):
+        result_list.append(job.get())
+
+    return result_list
+
+
 def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
     """ parses METIS graph format into networkx graph"""
+    #TODO: use numpy loadtxt to load graph_file as matrix and then process each row of the matrix
 
     assert weights in {"uniform", "source"}, "param 'weights' needs to be either 'uniform' or 'source'"
 
@@ -110,9 +125,7 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 # graph_mis_path = graph_mis_dir + (os.path.basename(graph_path) if graph_mis_dir else graph_path)[:-6] + ".MIS"
 # subprocess.run(["sh", "features/calc_mis.sh", graph_path, graph_mis_path])
 
-def load_graph_log(idx, graph_path, mis_path, num_of_graphs, no_labels):
-    print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ... ")
-
+def load_graph(graph_path, mis_path, no_labels):
     with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
         graph = metis_format_to_nx(graph_file)
         if not no_labels:
@@ -120,8 +133,6 @@ def load_graph_log(idx, graph_path, mis_path, num_of_graphs, no_labels):
 
     graph.graph['path'] = graph_path
     graph.graph['kw'] = os.path.basename(graph_path)
-
-    print("done.")
     return graph
 
 
@@ -142,18 +153,12 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     num_of_graphs = len(graph_paths)
     print("loading graph:")
 
-    with Pool(cpu_count()) as pool:
-        return pool.starmap(load_graph_log, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
-                                                itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
+    return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
+                                         itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
 
 
-def features_log(idx, g, num_of_graphs) -> np.array:
-    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
-
-    f = features(g).T
-
-    print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) done. ")
-    return f
+def features_helper(g) -> np.array:
+    return features(g)
 
 
 def get_dmatrix_from_graphs(graphs, no_labels=False):
@@ -163,14 +168,10 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
         print(f"get_dmatrix_from_graphs(graphs={graphs}): provided only empty (or no) graphs, returning empty np.array")
         return xgb.DMatrix(np.array([[]]))
 
-    num_of_graphs = len(graphs)
-
     # asynchronously calculate features for each graph and then
     with Pool(cpu_count()) as pool:
         print("calculating features for graph:")
-        feature_data = np.array(
-            pool.starmap(features_log, zip(range(1, len(graphs) + 1), graphs, itertools.cycle([num_of_graphs])))
-        ).T
+        feature_data = np.array(pool_map_tqdm(features_helper, graphs)).T
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
