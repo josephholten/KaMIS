@@ -180,10 +180,8 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
         np.array(feature_data))
 
 
-
 # testing
 if __name__ == "__main__":
- with open("../instances/karate.graph") as graph_file:
+    with open("../instances/karate.graph") as graph_file:
         G = metis_format_to_nx(graph_file)
-        write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")"""
-    pool_map_tqdm()
+        write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")
