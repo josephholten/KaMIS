@@ -149,7 +149,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
                                             itertools.cycle([no_labels])))
 
 
-def features_log(idx_and_graph: tuple[int, nx.Graph], num_of_graphs) -> np.array:
+def features_log(idx_and_graph, num_of_graphs) -> np.array:
     idx, g = idx_and_graph
     print(f"{g.graph['kw']} ({idx}/{num_of_graphs}) ... ")
 
