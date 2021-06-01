@@ -149,7 +149,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     if not no_labels:
         assert len(graph_paths) == len(mis_paths), "unequal lenghts of graphs and MIS"
 
-    print("loading graph:")
+    print("loading graphs:")
     return pool_map_tqdm(load_graph, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths))
 
 
