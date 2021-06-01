@@ -43,4 +43,4 @@ def features(g: nx.Graph) -> np.array:
             # F10: estimate for local chromatic density
         ])
 
-    return f(np.array(g.nodes)).T
+    return (np.vectorize(f)(np.array(g.nodes))).T
