@@ -143,8 +143,8 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     print("loading graph:")
 
     with Pool(cpu_count()) as pool:
-        return pool.map(load_graph_log, zip(range(1, len(graph_paths)+1), graph_paths, mis_paths,
-                                            itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
+        return pool.starmap(load_graph_log, zip(range(1, len(graph_paths) + 1), graph_paths, mis_paths,
+                                                itertools.cycle([num_of_graphs]), itertools.cycle([no_labels])))
 
 
 def features_log(idx, g, num_of_graphs) -> np.array:
@@ -168,11 +168,13 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     # asynchronously calculate features for each graph and then
     with Pool(cpu_count()) as pool:
         print("calculating features for graph:")
-        feature_data = np.array(pool.map(features_log, zip(range(1,len(graphs)+1), graphs, itertools.cycle([num_of_graphs])))).T
+        feature_data = np.array(
+            pool.starmap(features_log, zip(range(1, len(graphs) + 1), graphs, itertools.cycle([num_of_graphs])))
+        ).T
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
         feature_data.reshape(-1, feature_data.shape[-1])
         # do the same for label array (simpler since it only is a matrix)
-        labels = np.array(pool.map(lambda g: g.graph['labels'], graphs)).flatten()
+        labels = np.array(pool.starmap(lambda g: g.graph['labels'], graphs)).flatten()
 
     return xgb.DMatrix(np.array(feature_data), label=np.array(labels)) if not no_labels else xgb.DMatrix(
         np.array(feature_data))
