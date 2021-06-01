@@ -1,6 +1,7 @@
 import itertools
 import os
 import copy
+import time
 from pprint import pprint
 from tqdm import tqdm
 from multiprocessing import Pool, cpu_count
@@ -15,16 +16,16 @@ from features import features
 
 
 def pool_map_tqdm(func, argument_list):
-    with Pool(processes=cpu_count()) as pool:
-        jobs = [pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple)
-                else pool.apply_async(func=func, args=(argument,))
-                for argument in argument_list]
 
-    result_list = []
+    pool = Pool(processes=cpu_count())
+
+    jobs = [pool.apply_async(func=func, args=(*argument,)) if isinstance(argument, tuple) else pool.apply_async(func=func, args=(argument,)) for argument in argument_list]
+    pool.close()
+    result_list_tqdm = []
     for job in tqdm(jobs):
-        result_list.append(job.get())
+        result_list_tqdm.append(job.get())
 
-    return result_list
+    return result_list_tqdm
 
 
 def metis_format_to_nx(graph_file, weights="uniform") -> nx.Graph:
@@ -183,6 +184,6 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
 
 # testing
 if __name__ == "__main__":
-    with open("../instances/karate.graph") as graph_file:
+    """ heklje with open("../instances/karate.graph") as graph_file:
         G = metis_format_to_nx(graph_file)
-        write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")
+        write_nx_in_metis_format(G, "../instances/karate_rewritten.graph")"""
