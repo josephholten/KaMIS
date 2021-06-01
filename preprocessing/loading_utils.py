@@ -129,11 +129,12 @@ def search_for_graphs(keyword_list, graph_folder="instances", recursive=True, ex
 def load_graph(idx, graph_path, mis_path, num_of_graphs, no_labels):
     print(f"{os.path.basename(graph_path)} ({idx}/{num_of_graphs}) ...")
 
-    with open(graph_path) as graph_file, open(mis_path) as mis_file:  # read graph and labels from resp. files
+    with open(graph_path) as graph_file:   # read graph and labels from resp. files
         graph = metis_format_to_nx(graph_file)
 
-    if not no_labels:
-        graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
+    with open(mis_path) as mis_file:
+        if not no_labels:
+            graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
 
     graph.graph['path'] = graph_path
     graph.graph['kw'] = os.path.basename(graph_path)
