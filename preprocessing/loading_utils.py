@@ -132,9 +132,9 @@ def load_graph(idx, graph_path, mis_path, num_of_graphs, no_labels):
     with open(graph_path) as graph_file:   # read graph and labels from resp. files
         graph = metis_format_to_nx(graph_file)
 
-    with open(mis_path) as mis_file:
-        if not no_labels:
-            graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
+    if not no_labels:
+        with open(mis_path) as mis_file:
+                graph.graph['labels'] = np.loadtxt(mis_file)  # add labels as attribute to graph
 
     graph.graph['path'] = graph_path
     graph.graph['kw'] = os.path.basename(graph_path)
@@ -147,7 +147,7 @@ def get_graphs_and_labels(graph_paths: List[str], mis_paths=None, no_labels=Fals
     """ get list of nx.Graphs (each with their associated MIS labels) from a list of paths """
 
     # if no mis_paths specified, then assume they are in the same location as the graphs, but with the ".MIS" ending
-    if not mis_paths:
+    if not mis_paths or no_labels:
         if not no_labels:
             mis_paths = [graph_path[:-6] + ".MIS" for graph_path in graph_paths]
         else:

@@ -14,7 +14,9 @@ import subprocess
 # mtxe first graph no convergence of eigenvectors ... strange
 
 # only run on first graph of them all
-graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/independentset_instances/mtxe")[:1]
+graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/independentset_instances/")[:10]
+graph_paths = list(
+    filter(lambda path: path[path.rfind("/") + 1:] != "auto-sorted.graph", graph_paths))
 
 OUTPUT_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
 
