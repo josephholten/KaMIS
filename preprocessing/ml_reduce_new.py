@@ -14,9 +14,12 @@ import subprocess
 # mtxe first graph no convergence of eigenvectors ... strange
 
 # only run on first graph of them all
-graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/independentset_instances/")[:10]
+graph_paths = search_for_graphs(["olafu"], graph_folder="/home/graph_collection/independentset_instances/")[:1]
 graph_paths = list(
     filter(lambda path: path[path.rfind("/") + 1:] != "auto-sorted.graph", graph_paths))
+graph_paths = list(
+    filter(lambda path: path[path.rfind("/") + 1:] != "crack-sorted.graph", graph_paths))
+
 
 OUTPUT_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
 
@@ -28,7 +31,7 @@ bst = xgb.Booster({'nthread': 16})
 bst.load_model("first-10_2021-04-11.model")
 
 num_stages = 5
-q = 0.98   # confidence niveau
+q = 0.99   # confidence niveau
 
 for graph in graphs:
     graph.graph['removals'] = []
@@ -61,7 +64,7 @@ for graph in graphs:
 
 for graph in graphs:
     print(f"in graph {graph.graph['kw']} removed a total of {sum(graph.graph['removals'])} nodes, {sum(graph.graph['removals'])/graph.graph['old_number_of_nodes'] * 100 :.4f}%", "(", *graph.graph['removals'], ")")
-    ml_reduction_path = OUTPUT_FOLDER + graph.graph['kw'][:-6] + ".ml_kernel"
+    ml_reduction_path = OUTPUT_FOLDER + graph.graph['kw'][:-6] + ".ml_kernel_" + str(int(q*100))
     print(f"writing {graph.graph['kw']} to {ml_reduction_path} ...")
     write_nx_in_metis_format(graph, ml_reduction_path)
     print("done.")

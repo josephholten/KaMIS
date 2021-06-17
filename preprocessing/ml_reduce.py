@@ -12,8 +12,8 @@ import subprocess
 
 # mtxe first graph no convergence of eigenvectors ... strange
 
-graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/independentset_instances/mtxe")[:1]
-label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path)[:-6] + ".uniform.mis" for path in graph_paths]
+graph_paths = search_for_graphs([], graph_folder="/home/graph_collection/independentset_instances/mtxe")[2:4]
+label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path)[:-6] + ".uniform.mis" for path in graph_paths][2:4]
 
 OUTPUT_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
 

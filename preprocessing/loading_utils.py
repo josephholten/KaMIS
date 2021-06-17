@@ -180,9 +180,12 @@ def get_dmatrix_from_graphs(graphs, no_labels=False):
     print("calculating features for graph:")
 
     with Pool(cpu_count()) as pool:
-        feature_data = np.array(pool.starmap(features_helper, zip(range(1, len(graphs) + 1), graphs, itertools.cycle([len(graphs)])))).T
+        feature_data = np.array(pool.starmap(features_helper, zip(range(1, len(graphs) + 1), graphs, itertools.cycle([len(graphs)]))))
+        print(f"LOG:: shape of feature data: {feature_data.shape}")
         # flatten the array along the last axis (i.e. list of matrices are appended to each other)
-        feature_data.reshape(-1, feature_data.shape[-1])
+        feature_data = feature_data.reshape(-1, feature_data.shape[-1])
+
+        print(f"LOG:: shape of feature data: {feature_data.shape}")
         # do the same for label array (simpler since it only is a matrix)
         labels = np.array(map(lambda g: g.graph['labels'], graphs)).flatten()
 
