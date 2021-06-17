@@ -16,8 +16,7 @@
 #include <unordered_set>
 
 const int FEATURE_NUM = 13;
-
-enum kw : int { NODES=0, EDGES, DEG, CHI2_DEG, AVG_CHI2_DEG, LCC, CHI2_LCC, CHROMATIC, T_WEIGHT, NODE_W, W_DEG, CHI2_W_DEG, LOCAL_SEARCH };
+enum kw : int { NODES=0, EDGES=1, DEG=2, CHI2_DEG=3, AVG_CHI2_DEG=4, LCC=5, CHI2_LCC=6, CHROMATIC=7, T_WEIGHT=8, NODE_W=9, W_DEG=10, CHI2_W_DEG=11, LOCAL_SEARCH=12 };
 
 class FeatureCalculator {
 private:
@@ -80,6 +79,7 @@ private:
     double average(std::vector<T>& vec) {
         if (vec.empty())
             return 0;
+        auto sum = std::accumulate(vec.begin(), vec.end(), 0.0);
         return (double) std::accumulate(vec.begin(), vec.end(), 0.0) / vec.size();
     }
 
@@ -88,7 +88,7 @@ private:
         if (exp == 0)
             return 0;
         double diff = obs - exp;
-        return diff * diff / exp;
+        return (diff * diff) / exp;
     }
 
     template<class T>
@@ -119,16 +119,19 @@ private:
                 } endfor
             } endfor
 
-            lcc[node] = ((double) 2*local_edges) / (m_G.getNodeDegree(node) * (m_G.getNodeDegree(node) - 1));
+            if (m_G.getNodeDegree(node) > 1)
+                lcc[node] = ((double) 2*local_edges) / (m_G.getNodeDegree(node) * (m_G.getNodeDegree(node) - 1));
+            else
+                lcc[node] = 0;
         } endfor
     }
 
     void greedy_coloring(std::vector<int>& coloring) {
-        std::vector<bool> available(m_G.number_of_nodes(), false);
+        std::vector<bool> available(m_G.number_of_nodes(), true);
         forall_nodes(m_G, node) {
             std::fill(available.begin(), available.end(), true);
             forall_out_edges(m_G, edge, node) {
-                available[coloring[edge]] = false;
+                available[coloring[m_G.getEdgeTarget(edge)]] = false;
             } endfor
             coloring[node] = (int) (std::find_if(available.begin(), available.end(), [](bool x){ return x; }) - available.begin());
         } endfor
