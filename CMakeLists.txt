@@ -214,4 +214,6 @@ target_compile_definitions(online_mis PRIVATE "-DOMIS")
 target_link_libraries(online_mis ${OpenMP_CXX_LIBRARIES})
 install(TARGETS online_mis DESTINATION bin)
 
-
+add_executable(features preprocessing/features.cpp $<TARGET_OBJECTS:libkaffpa> $<TARGET_OBJECTS:libfiles>)
+target_link_libraries(features ${OpenMP_CXX_LIBRARIES})
+install(TARGETS features DESTINATION bin)
