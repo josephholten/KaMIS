@@ -1,0 +1,5 @@
+write bash script to redirect stderr and stdout to file in folder performance tests
+
+write python script to analyse output of mis calculations and either create gnuplots or matplotlib
+
+possibly rewrite parts or all of the code in c++ --> read and understand the kamis library. ask christian to explain the rationale behind the decision making and if and how I should use it in my preprocessing? removing nodes and edges e.g.? what could I otherwises use? boost graph library? why, why not? even neccessary to rewrite it in c++?

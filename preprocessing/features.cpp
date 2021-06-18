@@ -185,7 +185,9 @@ public:
     explicit FeatureCalculator(graph_access& G) : m_G(G), m_feature_mat(G.number_of_nodes()) {};
     ~FeatureCalculator() = default;
 
-    void calc_features(const std::string& path) {
+    void calc_features(const std::string& path, const std::string& temp_folder) {
+        std::string name(path.substr(path.find_last_of('/') + 1));
+
         // nodes
         m_feature_mat.fill_col(NODES, m_G.number_of_nodes());
 
@@ -263,7 +265,11 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
+<<<<<<< HEAD
             ss << "deploy/weighted_local_search " << path << " --out=" << path << ".w_ls" << round << " --seed=" << round << " --time_limit=" << 100;
+=======
+            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << round << " --time_limit=" << 100;
+>>>>>>> e99972804fc3355d516ebbb6060510ed86b13d85
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
@@ -294,12 +300,13 @@ public:
 int main(int argn, char **argv) {
     // Parse the command line parameters;
     if (argn != 3) {
-        std::cout << "please specify the graph path and the feature path" << "\n";
+        std::cout << "please specify the graph path and the feature directory" << "\n";
         return 1;
     }
 
     std::string graph_filepath(argv[1]);
-    std::string feature_path(argv[2]);
+    std::string graph_name(graph_filepath.substr(graph_filepath.find_last_of('/') + 1));
+    std::string feature_directory(argv[2]);
 
     std::string graph_filename = graph_filepath.substr(graph_filepath.find_last_of('c') + 1);
 
@@ -307,6 +314,12 @@ int main(int argn, char **argv) {
     graph_io::readGraphWeighted(G, graph_filepath);
 
     FeatureCalculator calc(G);
+<<<<<<< HEAD
     calc.calc_features(graph_filepath);
     calc.write_features(feature_path);
 }
+=======
+    calc.calc_features(graph_filepath, feature_directory);
+    calc.write_features(feature_directory + graph_name + ".feat");
+}
+>>>>>>> e99972804fc3355d516ebbb6060510ed86b13d85
