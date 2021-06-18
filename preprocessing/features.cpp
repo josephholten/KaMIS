@@ -122,7 +122,7 @@ private:
             if (m_G.getNodeDegree(node) > 1)
                 lcc[node] = ((double) 2*local_edges) / (m_G.getNodeDegree(node) * (m_G.getNodeDegree(node) - 1));
             else
-                lcc[node] = 0;
+                lcc[node] = 1;
         } endfor
     }
 
@@ -263,7 +263,7 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << path << ".w_ls" << " --seed=" << round << " "; ;
+            ss << "deploy/weighted_local_search " << path << " --out=" << path << ".w_ls" << " --seed=" << round << " "; // TODO: timelimit
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
