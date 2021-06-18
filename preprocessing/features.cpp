@@ -263,7 +263,7 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << path << ".w_ls" << " --seed=" << round << " "; // TODO: timelimit
+            ss << "deploy/weighted_local_search " << path << " --out=" << path << ".w_ls" << " --seed=" << round << " --time_limit=" << 100;
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
