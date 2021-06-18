@@ -7,7 +7,7 @@ import xgboost as xgb
 
 from cpp_preprocessing import cpp_features
 
-GRAPH_FOLDER = "/home/graph_collection/independentset_instances/walshaw"
+GRAPH_FOLDER = "/home/graph_collection/independentset_instances/walshaw/"
 graph_paths = ["bcsstk30-sorted.graph", "cs4-sorted.graph", "crack-sorted.graph"]
 graph_paths = [GRAPH_FOLDER + path for path in graph_paths]
 
