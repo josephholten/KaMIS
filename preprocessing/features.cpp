@@ -265,7 +265,7 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << round << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
+            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << rand() << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
@@ -305,12 +305,10 @@ int main(int argn, char **argv) {
     std::string feature_directory(argv[2]);
     int ls_time_limit = std::stoi(argv[3]);
 
-    std::string graph_filename = graph_filepath.substr(graph_filepath.find_last_of('c') + 1);
-
     graph_access G;
     graph_io::readGraphWeighted(G, graph_filepath);
 
     FeatureCalculator calc(G);
     calc.calc_features(graph_filepath, feature_directory, ls_time_limit);
-    calc.write_features(feature_directory + graph_name + ".feat");
+    calc.write_features(feature_directory + "/" + graph_name + ".feat");
 }
