@@ -1,0 +1,10 @@
+/home/jholten/kernels/kamis_kernels/vibrobox-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/brack2-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/gargoyle-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/crankseg_2.mtx-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/598a-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/germany-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/feline-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/blob-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/italy-sorted.graph.kernel
+/home/jholten/kernels/kamis_kernels/amazon-2008-sorted.graph.kernel
