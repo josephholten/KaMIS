@@ -185,7 +185,7 @@ public:
     explicit FeatureCalculator(graph_access& G) : m_G(G), m_feature_mat(G.number_of_nodes()) {};
     ~FeatureCalculator() = default;
 
-    void calc_features(const std::string& path, const std::string& temp_folder) {
+    void calc_features(const std::string& path, const std::string& temp_folder, int ls_time_limit) {
         std::string name(path.substr(path.find_last_of('/') + 1));
 
         // nodes
@@ -265,7 +265,7 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << round << " --time_limit=" << 20;
+            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << round << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
@@ -295,14 +295,15 @@ public:
 
 int main(int argn, char **argv) {
     // Parse the command line parameters;
-    if (argn != 3) {
-        std::cout << "please specify the graph path and the feature directory" << "\n";
+    if (argn != 4) {
+        std::cout << "please specify the graph path and the feature directory and the time limit for the local search" << "\n";
         return 1;
     }
 
     std::string graph_filepath(argv[1]);
     std::string graph_name(graph_filepath.substr(graph_filepath.find_last_of('/') + 1));
     std::string feature_directory(argv[2]);
+    int ls_time_limit = std::stoi(argv[3]);
 
     std::string graph_filename = graph_filepath.substr(graph_filepath.find_last_of('c') + 1);
 
@@ -310,6 +311,6 @@ int main(int argn, char **argv) {
     graph_io::readGraphWeighted(G, graph_filepath);
 
     FeatureCalculator calc(G);
-    calc.calc_features(graph_filepath, feature_directory);
+    calc.calc_features(graph_filepath, feature_directory, ls_time_limit);
     calc.write_features(feature_directory + graph_name + ".feat");
 }
