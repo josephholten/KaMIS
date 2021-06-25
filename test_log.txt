@@ -1,7 +1,0 @@
-
-Command 'pyhton3' not found, did you mean:
-
-  command 'python3' from deb python3 (3.8.2-0ubuntu2)
-
-Try: apt install <deb name>
-

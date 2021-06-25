@@ -1,0 +1,4 @@
+/home/jholten/graphs/bay-sorted.graph
+/home/jholten/graphs/ny-sorted.graph
+/home/jholten/graphs/col-sorted.graph
+/home/jholten/graphs/fla-sorted.graph

@@ -1,5 +1,4 @@
-import datetime
-from datetime import date
+from datetime import date, datetime
 from glob import glob
 from multiprocessing import Pool, cpu_count
 
@@ -21,11 +20,11 @@ from tqdm import tqdm
 #graph_paths, test_paths = graph_paths[:-10], graph_paths[-10:]
 #print(test_paths)
 
-feature_paths = glob("/home/jholten/graph_files/*.graph.kernel.feat")
-with open("test_graphs.txt") as test_file:
-    test_paths = test_file.readlines()
-feature_paths = list(filter(lambda x: x not in test_paths, feature_paths))  # remove the test paths
-label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path)[:-len(".feat")] + ".mis" for path in feature_paths]
+time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+print(time)
+graph_paths = glob("/home/jholten/graphs/*")
+feature_paths = [ "/home/jholten/graph_files/" + os.path.basename(path) + ".feat" for path in graph_paths]
+label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path) + ".mis" for path in graph_paths]
 
 with Pool(cpu_count()) as pool:
     feature_data = np.vstack(pool.map(np.loadtxt, feature_paths))  # tqdm concurrent process_map => progress bar
@@ -35,8 +34,9 @@ dtrain = xgb.DMatrix(feature_data, label=label_data)
 
 num_round = 30 
 evallist = [(dtrain, 'train')]
-param = {'eta': 1, 'max_depth': 3, 'objective': 'binary:logistic', 'eval_metric': 'logloss', 'nthread': 16}
+param = {'eta': 1, 'max_depth': 3, 'objective': 'binary:logistic', 'eval_metric': 'logloss', 'nthread': 32}
 
 print("starting training...")
 bst = xgb.train(param, dtrain, num_round, evallist)
-bst.save_model("/home/jholten/KaMIS/all_kernels.model")
+time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+bst.save_model(f"/home/jholten/KaMIS/{time}.model")

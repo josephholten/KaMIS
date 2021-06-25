@@ -1,0 +1,868 @@
+/home/jholten/graphs/fandisk-sorted.graph	==========================================
+/home/jholten/graphs/fandisk-sorted.graph			GraphChecker
+/home/jholten/graphs/fandisk-sorted.graph	==========================================
+/home/jholten/graphs/fandisk-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fandisk-sorted.graph	
+/home/jholten/graphs/fandisk-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fandisk-sorted.graph	
+/home/jholten/graphs/fandisk-sorted.graph	==========================================
+/home/jholten/graphs/fandisk-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/Oregon-1.mtx.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx.graph			GraphChecker
+/home/jholten/graphs/Oregon-1.mtx.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Oregon-1.mtx.graph	
+/home/jholten/graphs/Oregon-1.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Oregon-1.mtx.graph	
+/home/jholten/graphs/Oregon-1.mtx.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/bodyy6.mtx.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx.graph			GraphChecker
+/home/jholten/graphs/bodyy6.mtx.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/bodyy6.mtx.graph	
+/home/jholten/graphs/bodyy6.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/bodyy6.mtx.graph	
+/home/jholten/graphs/bodyy6.mtx.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Oregon-1.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/rajat07.mtx.graph	==========================================
+/home/jholten/graphs/rajat07.mtx.graph			GraphChecker
+/home/jholten/graphs/rajat07.mtx.graph	==========================================
+/home/jholten/graphs/rajat07.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/rajat07.mtx.graph	
+/home/jholten/graphs/rajat07.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/rajat07.mtx.graph	
+/home/jholten/graphs/rajat07.mtx.graph	==========================================
+/home/jholten/graphs/rajat07.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/blob-sorted.graph	==========================================
+/home/jholten/graphs/blob-sorted.graph			GraphChecker
+/home/jholten/graphs/blob-sorted.graph	==========================================
+/home/jholten/graphs/blob-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/blob-sorted.graph	
+/home/jholten/graphs/blob-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/blob-sorted.graph	
+/home/jholten/graphs/blob-sorted.graph	==========================================
+/home/jholten/graphs/blob-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/gameguy-sorted.graph	==========================================
+/home/jholten/graphs/gameguy-sorted.graph			GraphChecker
+/home/jholten/graphs/gameguy-sorted.graph	==========================================
+/home/jholten/graphs/gameguy-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/gameguy-sorted.graph	
+/home/jholten/graphs/gameguy-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/gameguy-sorted.graph	
+/home/jholten/graphs/gameguy-sorted.graph	==========================================
+/home/jholten/graphs/gameguy-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/skirt.mtx.graph	==========================================
+/home/jholten/graphs/skirt.mtx.graph			GraphChecker
+/home/jholten/graphs/skirt.mtx.graph	==========================================
+/home/jholten/graphs/skirt.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/skirt.mtx.graph	
+/home/jholten/graphs/skirt.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/skirt.mtx.graph	
+/home/jholten/graphs/skirt.mtx.graph	==========================================
+/home/jholten/graphs/skirt.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/feline-sorted.graph	==========================================
+/home/jholten/graphs/feline-sorted.graph			GraphChecker
+/home/jholten/graphs/feline-sorted.graph	==========================================
+/home/jholten/graphs/feline-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/feline-sorted.graph	
+/home/jholten/graphs/feline-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/feline-sorted.graph	
+/home/jholten/graphs/feline-sorted.graph	==========================================
+/home/jholten/graphs/feline-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/dixmaanl.mtx.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx.graph			GraphChecker
+/home/jholten/graphs/dixmaanl.mtx.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/dixmaanl.mtx.graph	
+/home/jholten/graphs/dixmaanl.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/dixmaanl.mtx.graph	
+/home/jholten/graphs/dixmaanl.mtx.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/ca-HepPh.mtx.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx.graph			GraphChecker
+/home/jholten/graphs/ca-HepPh.mtx.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/ca-HepPh.mtx.graph	
+/home/jholten/graphs/ca-HepPh.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/ca-HepPh.mtx.graph	
+/home/jholten/graphs/ca-HepPh.mtx.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/case9.mtx.graph	==========================================
+/home/jholten/graphs/case9.mtx.graph			GraphChecker
+/home/jholten/graphs/case9.mtx.graph	==========================================
+/home/jholten/graphs/case9.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/case9.mtx.graph	
+/home/jholten/graphs/case9.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/case9.mtx.graph	
+/home/jholten/graphs/case9.mtx.graph	==========================================
+/home/jholten/graphs/case9.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/face-sorted.graph	==========================================
+/home/jholten/graphs/face-sorted.graph			GraphChecker
+/home/jholten/graphs/face-sorted.graph	==========================================
+/home/jholten/graphs/face-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/face-sorted.graph	
+/home/jholten/graphs/face-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/face-sorted.graph	
+/home/jholten/graphs/face-sorted.graph	==========================================
+/home/jholten/graphs/face-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	==========================================
+/home/jholten/graphs/ca-HepPh.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/c-68.mtx.graph	==========================================
+/home/jholten/graphs/c-68.mtx.graph			GraphChecker
+/home/jholten/graphs/c-68.mtx.graph	==========================================
+/home/jholten/graphs/c-68.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-68.mtx.graph	
+/home/jholten/graphs/c-68.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-68.mtx.graph	
+/home/jholten/graphs/c-68.mtx.graph	==========================================
+/home/jholten/graphs/c-68.mtx.graph	The graph format seems correct.
+/home/jholten/graphs	==========================================
+/home/jholten/graphs			GraphChecker
+/home/jholten/graphs	==========================================
+/home/jholten/graphs	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs	
+/home/jholten/graphs/c-68.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-68.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/c-68.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-68.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-68.mtx-sorted.graph	
+/home/jholten/graphs/c-68.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-68.mtx-sorted.graph	
+/home/jholten/graphs/c-68.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-68.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/olafu.mtx.graph	==========================================
+/home/jholten/graphs/olafu.mtx.graph			GraphChecker
+/home/jholten/graphs/olafu.mtx.graph	==========================================
+/home/jholten/graphs/olafu.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/olafu.mtx.graph	
+/home/jholten/graphs/olafu.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/olafu.mtx.graph	
+/home/jholten/graphs/olafu.mtx.graph	==========================================
+/home/jholten/graphs/olafu.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/brack2-sorted.graph	==========================================
+/home/jholten/graphs/brack2-sorted.graph			GraphChecker
+/home/jholten/graphs/brack2-sorted.graph	==========================================
+/home/jholten/graphs/brack2-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/brack2-sorted.graph	
+/home/jholten/graphs/brack2-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/brack2-sorted.graph	
+/home/jholten/graphs/brack2-sorted.graph	==========================================
+/home/jholten/graphs/brack2-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/bunny-sorted.graph	==========================================
+/home/jholten/graphs/bunny-sorted.graph			GraphChecker
+/home/jholten/graphs/bunny-sorted.graph	==========================================
+/home/jholten/graphs/bunny-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/bunny-sorted.graph	
+/home/jholten/graphs/bunny-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/bunny-sorted.graph	
+/home/jholten/graphs/bunny-sorted.graph	==========================================
+/home/jholten/graphs/bunny-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/olafu.mtx-sorted.graph	==========================================
+/home/jholten/graphs/olafu.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/olafu.mtx-sorted.graph	==========================================
+/home/jholten/graphs/olafu.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/olafu.mtx-sorted.graph	
+/home/jholten/graphs/olafu.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/olafu.mtx-sorted.graph	
+/home/jholten/graphs/olafu.mtx-sorted.graph	==========================================
+/home/jholten/graphs/olafu.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/bodyy6.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/copter2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/copter2.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/copter2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/copter2.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/copter2.mtx-sorted.graph	
+/home/jholten/graphs/copter2.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/copter2.mtx-sorted.graph	
+/home/jholten/graphs/copter2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/copter2.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/bcsstk31-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk31-sorted.graph			GraphChecker
+/home/jholten/graphs/bcsstk31-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk31-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/bcsstk31-sorted.graph	
+/home/jholten/graphs/bcsstk31-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/bcsstk31-sorted.graph	
+/home/jholten/graphs/bcsstk31-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk31-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/fe_tooth-sorted.graph	==========================================
+/home/jholten/graphs/fe_tooth-sorted.graph			GraphChecker
+/home/jholten/graphs/fe_tooth-sorted.graph	==========================================
+/home/jholten/graphs/fe_tooth-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fe_tooth-sorted.graph	
+/home/jholten/graphs/fe_tooth-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fe_tooth-sorted.graph	
+/home/jholten/graphs/fe_tooth-sorted.graph	==========================================
+/home/jholten/graphs/fe_tooth-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cyl6.mtx.graph	==========================================
+/home/jholten/graphs/cyl6.mtx.graph			GraphChecker
+/home/jholten/graphs/cyl6.mtx.graph	==========================================
+/home/jholten/graphs/cyl6.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cyl6.mtx.graph	
+/home/jholten/graphs/cyl6.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cyl6.mtx.graph	
+/home/jholten/graphs/cyl6.mtx.graph	==========================================
+/home/jholten/graphs/cyl6.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/c-57.mtx.graph	==========================================
+/home/jholten/graphs/c-57.mtx.graph			GraphChecker
+/home/jholten/graphs/c-57.mtx.graph	==========================================
+/home/jholten/graphs/c-57.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-57.mtx.graph	
+/home/jholten/graphs/c-57.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-57.mtx.graph	
+/home/jholten/graphs/c-57.mtx.graph	==========================================
+/home/jholten/graphs/c-57.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/venus-sorted.graph	==========================================
+/home/jholten/graphs/venus-sorted.graph			GraphChecker
+/home/jholten/graphs/venus-sorted.graph	==========================================
+/home/jholten/graphs/venus-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/venus-sorted.graph	
+/home/jholten/graphs/venus-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/venus-sorted.graph	
+/home/jholten/graphs/venus-sorted.graph	==========================================
+/home/jholten/graphs/venus-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cs4-sorted.graph	==========================================
+/home/jholten/graphs/cs4-sorted.graph			GraphChecker
+/home/jholten/graphs/cs4-sorted.graph	==========================================
+/home/jholten/graphs/cs4-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cs4-sorted.graph	
+/home/jholten/graphs/cs4-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cs4-sorted.graph	
+/home/jholten/graphs/cs4-sorted.graph	==========================================
+/home/jholten/graphs/cs4-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/c-67.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-67.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/c-67.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-67.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-67.mtx-sorted.graph	
+/home/jholten/graphs/c-67.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-67.mtx-sorted.graph	
+/home/jholten/graphs/c-67.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-67.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/Dubcova1.mtx.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx.graph			GraphChecker
+/home/jholten/graphs/Dubcova1.mtx.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Dubcova1.mtx.graph	
+/home/jholten/graphs/Dubcova1.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Dubcova1.mtx.graph	
+/home/jholten/graphs/Dubcova1.mtx.graph	==========================================
+/home/jholten/graphs/Dubcova1.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/luxembourg-sorted.graph	==========================================
+/home/jholten/graphs/luxembourg-sorted.graph			GraphChecker
+/home/jholten/graphs/luxembourg-sorted.graph	==========================================
+/home/jholten/graphs/luxembourg-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/luxembourg-sorted.graph	
+/home/jholten/graphs/luxembourg-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/luxembourg-sorted.graph	
+/home/jholten/graphs/luxembourg-sorted.graph	==========================================
+/home/jholten/graphs/luxembourg-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/ncvxqp5.mtx.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx.graph			GraphChecker
+/home/jholten/graphs/ncvxqp5.mtx.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/ncvxqp5.mtx.graph	
+/home/jholten/graphs/ncvxqp5.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/ncvxqp5.mtx.graph	
+/home/jholten/graphs/ncvxqp5.mtx.graph	==========================================
+/home/jholten/graphs/ncvxqp5.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/c-67.mtx.graph	==========================================
+/home/jholten/graphs/c-67.mtx.graph			GraphChecker
+/home/jholten/graphs/c-67.mtx.graph	==========================================
+/home/jholten/graphs/c-67.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-67.mtx.graph	
+/home/jholten/graphs/c-67.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-67.mtx.graph	
+/home/jholten/graphs/c-67.mtx.graph	==========================================
+/home/jholten/graphs/c-67.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/skirt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/skirt.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/skirt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/skirt.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/skirt.mtx-sorted.graph	
+/home/jholten/graphs/skirt.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/skirt.mtx-sorted.graph	
+/home/jholten/graphs/skirt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/skirt.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/enron-sorted.graph	==========================================
+/home/jholten/graphs/enron-sorted.graph			GraphChecker
+/home/jholten/graphs/enron-sorted.graph	==========================================
+/home/jholten/graphs/enron-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/enron-sorted.graph	
+/home/jholten/graphs/enron-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/enron-sorted.graph	
+/home/jholten/graphs/enron-sorted.graph	==========================================
+/home/jholten/graphs/enron-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/fe_pwt-sorted.graph	==========================================
+/home/jholten/graphs/fe_pwt-sorted.graph			GraphChecker
+/home/jholten/graphs/fe_pwt-sorted.graph	==========================================
+/home/jholten/graphs/fe_pwt-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fe_pwt-sorted.graph	
+/home/jholten/graphs/fe_pwt-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fe_pwt-sorted.graph	
+/home/jholten/graphs/fe_pwt-sorted.graph	==========================================
+/home/jholten/graphs/fe_pwt-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/c-57.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-57.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/c-57.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-57.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/c-57.mtx-sorted.graph	
+/home/jholten/graphs/c-57.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/c-57.mtx-sorted.graph	
+/home/jholten/graphs/c-57.mtx-sorted.graph	==========================================
+/home/jholten/graphs/c-57.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cyl6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cyl6.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/cyl6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cyl6.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cyl6.mtx-sorted.graph	
+/home/jholten/graphs/cyl6.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cyl6.mtx-sorted.graph	
+/home/jholten/graphs/cyl6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cyl6.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/copter2.mtx.graph	==========================================
+/home/jholten/graphs/copter2.mtx.graph			GraphChecker
+/home/jholten/graphs/copter2.mtx.graph	==========================================
+/home/jholten/graphs/copter2.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/copter2.mtx.graph	
+/home/jholten/graphs/copter2.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/copter2.mtx.graph	
+/home/jholten/graphs/copter2.mtx.graph	==========================================
+/home/jholten/graphs/copter2.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/a5esindl.mtx.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx.graph			GraphChecker
+/home/jholten/graphs/a5esindl.mtx.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/a5esindl.mtx.graph	
+/home/jholten/graphs/a5esindl.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/a5esindl.mtx.graph	
+/home/jholten/graphs/a5esindl.mtx.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/rajat07.mtx-sorted.graph	==========================================
+/home/jholten/graphs/rajat07.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/rajat07.mtx-sorted.graph	==========================================
+/home/jholten/graphs/rajat07.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/rajat07.mtx-sorted.graph	
+/home/jholten/graphs/rajat07.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/rajat07.mtx-sorted.graph	
+/home/jholten/graphs/rajat07.mtx-sorted.graph	==========================================
+/home/jholten/graphs/rajat07.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/gargoyle-sorted.graph	==========================================
+/home/jholten/graphs/gargoyle-sorted.graph			GraphChecker
+/home/jholten/graphs/gargoyle-sorted.graph	==========================================
+/home/jholten/graphs/gargoyle-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/gargoyle-sorted.graph	
+/home/jholten/graphs/gargoyle-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/gargoyle-sorted.graph	
+/home/jholten/graphs/gargoyle-sorted.graph	==========================================
+/home/jholten/graphs/gargoyle-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/turtle-sorted.graph	==========================================
+/home/jholten/graphs/turtle-sorted.graph			GraphChecker
+/home/jholten/graphs/turtle-sorted.graph	==========================================
+/home/jholten/graphs/turtle-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/turtle-sorted.graph	
+/home/jholten/graphs/turtle-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/turtle-sorted.graph	
+/home/jholten/graphs/turtle-sorted.graph	==========================================
+/home/jholten/graphs/turtle-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/dixmaanl.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/wave-sorted.graph	==========================================
+/home/jholten/graphs/wave-sorted.graph			GraphChecker
+/home/jholten/graphs/wave-sorted.graph	==========================================
+/home/jholten/graphs/wave-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/wave-sorted.graph	
+/home/jholten/graphs/wave-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/wave-sorted.graph	
+/home/jholten/graphs/wave-sorted.graph	==========================================
+/home/jholten/graphs/wave-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/fe_rotor-sorted.graph	==========================================
+/home/jholten/graphs/fe_rotor-sorted.graph			GraphChecker
+/home/jholten/graphs/fe_rotor-sorted.graph	==========================================
+/home/jholten/graphs/fe_rotor-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fe_rotor-sorted.graph	
+/home/jholten/graphs/fe_rotor-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fe_rotor-sorted.graph	
+/home/jholten/graphs/fe_rotor-sorted.graph	==========================================
+/home/jholten/graphs/fe_rotor-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/raefsky4.mtx.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx.graph			GraphChecker
+/home/jholten/graphs/raefsky4.mtx.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/raefsky4.mtx.graph	
+/home/jholten/graphs/raefsky4.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/raefsky4.mtx.graph	
+/home/jholten/graphs/raefsky4.mtx.graph	==========================================
+/home/jholten/graphs/raefsky4.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/cbuckle.mtx.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx.graph			GraphChecker
+/home/jholten/graphs/cbuckle.mtx.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cbuckle.mtx.graph	
+/home/jholten/graphs/cbuckle.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cbuckle.mtx.graph	
+/home/jholten/graphs/cbuckle.mtx.graph	==========================================
+/home/jholten/graphs/cbuckle.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	==========================================
+/home/jholten/graphs/a5esindl.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	==========================================
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph			GraphChecker
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	==========================================
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	==========================================
+/home/jholten/graphs/loc-gowalla_edges-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cow-sorted.graph	==========================================
+/home/jholten/graphs/cow-sorted.graph			GraphChecker
+/home/jholten/graphs/cow-sorted.graph	==========================================
+/home/jholten/graphs/cow-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cow-sorted.graph	
+/home/jholten/graphs/cow-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cow-sorted.graph	
+/home/jholten/graphs/cow-sorted.graph	==========================================
+/home/jholten/graphs/cow-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/case9.mtx-sorted.graph	==========================================
+/home/jholten/graphs/case9.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/case9.mtx-sorted.graph	==========================================
+/home/jholten/graphs/case9.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/case9.mtx-sorted.graph	
+/home/jholten/graphs/case9.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/case9.mtx-sorted.graph	
+/home/jholten/graphs/case9.mtx-sorted.graph	==========================================
+/home/jholten/graphs/case9.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/pdb1HYS.mtx.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx.graph			GraphChecker
+/home/jholten/graphs/pdb1HYS.mtx.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/pdb1HYS.mtx.graph	
+/home/jholten/graphs/pdb1HYS.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/pdb1HYS.mtx.graph	
+/home/jholten/graphs/pdb1HYS.mtx.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	==========================================
+/home/jholten/graphs/pdb1HYS.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/4elt-sorted.graph	==========================================
+/home/jholten/graphs/4elt-sorted.graph			GraphChecker
+/home/jholten/graphs/4elt-sorted.graph	==========================================
+/home/jholten/graphs/4elt-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/4elt-sorted.graph	
+/home/jholten/graphs/4elt-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/4elt-sorted.graph	
+/home/jholten/graphs/4elt-sorted.graph	==========================================
+/home/jholten/graphs/4elt-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/beethoven-sorted.graph	==========================================
+/home/jholten/graphs/beethoven-sorted.graph			GraphChecker
+/home/jholten/graphs/beethoven-sorted.graph	==========================================
+/home/jholten/graphs/beethoven-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/beethoven-sorted.graph	
+/home/jholten/graphs/beethoven-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/beethoven-sorted.graph	
+/home/jholten/graphs/beethoven-sorted.graph	==========================================
+/home/jholten/graphs/beethoven-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/crack-sorted.graph	==========================================
+/home/jholten/graphs/crack-sorted.graph			GraphChecker
+/home/jholten/graphs/crack-sorted.graph	==========================================
+/home/jholten/graphs/crack-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/crack-sorted.graph	
+/home/jholten/graphs/crack-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/crack-sorted.graph	
+/home/jholten/graphs/crack-sorted.graph	==========================================
+/home/jholten/graphs/crack-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/dragonsub-sorted.graph	==========================================
+/home/jholten/graphs/dragonsub-sorted.graph			GraphChecker
+/home/jholten/graphs/dragonsub-sorted.graph	==========================================
+/home/jholten/graphs/dragonsub-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/dragonsub-sorted.graph	
+/home/jholten/graphs/dragonsub-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/dragonsub-sorted.graph	
+/home/jholten/graphs/dragonsub-sorted.graph	==========================================
+/home/jholten/graphs/dragonsub-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/ecat-sorted.graph	==========================================
+/home/jholten/graphs/ecat-sorted.graph			GraphChecker
+/home/jholten/graphs/ecat-sorted.graph	==========================================
+/home/jholten/graphs/ecat-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/ecat-sorted.graph	
+/home/jholten/graphs/ecat-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/ecat-sorted.graph	
+/home/jholten/graphs/ecat-sorted.graph	==========================================
+/home/jholten/graphs/ecat-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/598a-sorted.graph	==========================================
+/home/jholten/graphs/598a-sorted.graph			GraphChecker
+/home/jholten/graphs/598a-sorted.graph	==========================================
+/home/jholten/graphs/598a-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/598a-sorted.graph	
+/home/jholten/graphs/598a-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/598a-sorted.graph	
+/home/jholten/graphs/598a-sorted.graph	==========================================
+/home/jholten/graphs/598a-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/fla-sorted.graph	==========================================
+/home/jholten/graphs/fla-sorted.graph			GraphChecker
+/home/jholten/graphs/fla-sorted.graph	==========================================
+/home/jholten/graphs/fla-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fla-sorted.graph	
+/home/jholten/graphs/fla-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fla-sorted.graph	The number of edges specified in the beginning of the file does not match the number of edges that are in the file.
+/home/jholten/graphs/fla-sorted.graph	You specified 5425596 but there are 2687902
+/home/jholten/graphs/vibrobox-sorted.graph	==========================================
+/home/jholten/graphs/vibrobox-sorted.graph			GraphChecker
+/home/jholten/graphs/vibrobox-sorted.graph	==========================================
+/home/jholten/graphs/vibrobox-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/vibrobox-sorted.graph	
+/home/jholten/graphs/vibrobox-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/vibrobox-sorted.graph	
+/home/jholten/graphs/vibrobox-sorted.graph	==========================================
+/home/jholten/graphs/vibrobox-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/bcsstk30-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk30-sorted.graph			GraphChecker
+/home/jholten/graphs/bcsstk30-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk30-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/bcsstk30-sorted.graph	
+/home/jholten/graphs/bcsstk30-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/bcsstk30-sorted.graph	
+/home/jholten/graphs/bcsstk30-sorted.graph	==========================================
+/home/jholten/graphs/bcsstk30-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/dragon-sorted.graph	==========================================
+/home/jholten/graphs/dragon-sorted.graph			GraphChecker
+/home/jholten/graphs/dragon-sorted.graph	==========================================
+/home/jholten/graphs/dragon-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/dragon-sorted.graph	
+/home/jholten/graphs/dragon-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/dragon-sorted.graph	
+/home/jholten/graphs/dragon-sorted.graph	==========================================
+/home/jholten/graphs/dragon-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/fe_ocean-sorted.graph	==========================================
+/home/jholten/graphs/fe_ocean-sorted.graph			GraphChecker
+/home/jholten/graphs/fe_ocean-sorted.graph	==========================================
+/home/jholten/graphs/fe_ocean-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/fe_ocean-sorted.graph	
+/home/jholten/graphs/fe_ocean-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/fe_ocean-sorted.graph	
+/home/jholten/graphs/fe_ocean-sorted.graph	==========================================
+/home/jholten/graphs/fe_ocean-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/smt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/smt.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/smt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/smt.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/smt.mtx-sorted.graph	
+/home/jholten/graphs/smt.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/smt.mtx-sorted.graph	
+/home/jholten/graphs/smt.mtx-sorted.graph	==========================================
+/home/jholten/graphs/smt.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/buddha-sorted.graph	==========================================
+/home/jholten/graphs/buddha-sorted.graph			GraphChecker
+/home/jholten/graphs/buddha-sorted.graph	==========================================
+/home/jholten/graphs/buddha-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/buddha-sorted.graph	
+/home/jholten/graphs/buddha-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/buddha-sorted.graph	
+/home/jholten/graphs/buddha-sorted.graph	==========================================
+/home/jholten/graphs/buddha-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cant.mtx.graph	==========================================
+/home/jholten/graphs/cant.mtx.graph			GraphChecker
+/home/jholten/graphs/cant.mtx.graph	==========================================
+/home/jholten/graphs/cant.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cant.mtx.graph	
+/home/jholten/graphs/cant.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cant.mtx.graph	
+/home/jholten/graphs/cant.mtx.graph	==========================================
+/home/jholten/graphs/cant.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/cant.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cant.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/cant.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cant.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cant.mtx-sorted.graph	
+/home/jholten/graphs/cant.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cant.mtx-sorted.graph	
+/home/jholten/graphs/cant.mtx-sorted.graph	==========================================
+/home/jholten/graphs/cant.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/blockqp1.mtx.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx.graph			GraphChecker
+/home/jholten/graphs/blockqp1.mtx.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/blockqp1.mtx.graph	
+/home/jholten/graphs/blockqp1.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/blockqp1.mtx.graph	
+/home/jholten/graphs/blockqp1.mtx.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/citationCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/citationCiteseer-sorted.graph			GraphChecker
+/home/jholten/graphs/citationCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/citationCiteseer-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/citationCiteseer-sorted.graph	
+/home/jholten/graphs/citationCiteseer-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/citationCiteseer-sorted.graph	
+/home/jholten/graphs/citationCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/citationCiteseer-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/smt.mtx.graph	==========================================
+/home/jholten/graphs/smt.mtx.graph			GraphChecker
+/home/jholten/graphs/smt.mtx.graph	==========================================
+/home/jholten/graphs/smt.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/smt.mtx.graph	
+/home/jholten/graphs/smt.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/smt.mtx.graph	
+/home/jholten/graphs/smt.mtx.graph	==========================================
+/home/jholten/graphs/smt.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/web-Google-sorted.graph	==========================================
+/home/jholten/graphs/web-Google-sorted.graph			GraphChecker
+/home/jholten/graphs/web-Google-sorted.graph	==========================================
+/home/jholten/graphs/web-Google-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/web-Google-sorted.graph	
+/home/jholten/graphs/web-Google-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/web-Google-sorted.graph	
+/home/jholten/graphs/web-Google-sorted.graph	==========================================
+/home/jholten/graphs/web-Google-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/auto-sorted.graph	==========================================
+/home/jholten/graphs/auto-sorted.graph			GraphChecker
+/home/jholten/graphs/auto-sorted.graph	==========================================
+/home/jholten/graphs/auto-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/auto-sorted.graph	
+/home/jholten/graphs/auto-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/auto-sorted.graph	
+/home/jholten/graphs/auto-sorted.graph	==========================================
+/home/jholten/graphs/auto-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/GaAsH6.mtx.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx.graph			GraphChecker
+/home/jholten/graphs/GaAsH6.mtx.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/GaAsH6.mtx.graph	
+/home/jholten/graphs/GaAsH6.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/GaAsH6.mtx.graph	
+/home/jholten/graphs/GaAsH6.mtx.graph	==========================================
+/home/jholten/graphs/GaAsH6.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/Ga3As3H12.mtx.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx.graph			GraphChecker
+/home/jholten/graphs/Ga3As3H12.mtx.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/Ga3As3H12.mtx.graph	
+/home/jholten/graphs/Ga3As3H12.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/Ga3As3H12.mtx.graph	
+/home/jholten/graphs/Ga3As3H12.mtx.graph	==========================================
+/home/jholten/graphs/Ga3As3H12.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	==========================================
+/home/jholten/graphs/blockqp1.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/amazon-2008-sorted.graph	==========================================
+/home/jholten/graphs/amazon-2008-sorted.graph			GraphChecker
+/home/jholten/graphs/amazon-2008-sorted.graph	==========================================
+/home/jholten/graphs/amazon-2008-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/amazon-2008-sorted.graph	
+/home/jholten/graphs/amazon-2008-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/amazon-2008-sorted.graph	
+/home/jholten/graphs/amazon-2008-sorted.graph	==========================================
+/home/jholten/graphs/amazon-2008-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/netherlands-sorted.graph	==========================================
+/home/jholten/graphs/netherlands-sorted.graph			GraphChecker
+/home/jholten/graphs/netherlands-sorted.graph	==========================================
+/home/jholten/graphs/netherlands-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/netherlands-sorted.graph	
+/home/jholten/graphs/netherlands-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/netherlands-sorted.graph	
+/home/jholten/graphs/netherlands-sorted.graph	==========================================
+/home/jholten/graphs/netherlands-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/crankseg_2.mtx.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx.graph			GraphChecker
+/home/jholten/graphs/crankseg_2.mtx.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/crankseg_2.mtx.graph	
+/home/jholten/graphs/crankseg_2.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/crankseg_2.mtx.graph	
+/home/jholten/graphs/crankseg_2.mtx.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/crankseg_2.mtx-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/cnr-2000-sorted.graph	==========================================
+/home/jholten/graphs/cnr-2000-sorted.graph			GraphChecker
+/home/jholten/graphs/cnr-2000-sorted.graph	==========================================
+/home/jholten/graphs/cnr-2000-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/cnr-2000-sorted.graph	
+/home/jholten/graphs/cnr-2000-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/cnr-2000-sorted.graph	
+/home/jholten/graphs/cnr-2000-sorted.graph	==========================================
+/home/jholten/graphs/cnr-2000-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/italy-sorted.graph	==========================================
+/home/jholten/graphs/italy-sorted.graph			GraphChecker
+/home/jholten/graphs/italy-sorted.graph	==========================================
+/home/jholten/graphs/italy-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/italy-sorted.graph	
+/home/jholten/graphs/italy-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/italy-sorted.graph	
+/home/jholten/graphs/italy-sorted.graph	==========================================
+/home/jholten/graphs/italy-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/as-skitter-sorted.graph	==========================================
+/home/jholten/graphs/as-skitter-sorted.graph			GraphChecker
+/home/jholten/graphs/as-skitter-sorted.graph	==========================================
+/home/jholten/graphs/as-skitter-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/as-skitter-sorted.graph	
+/home/jholten/graphs/as-skitter-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/as-skitter-sorted.graph	
+/home/jholten/graphs/as-skitter-sorted.graph	==========================================
+/home/jholten/graphs/as-skitter-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/great-britain-sorted.graph	==========================================
+/home/jholten/graphs/great-britain-sorted.graph			GraphChecker
+/home/jholten/graphs/great-britain-sorted.graph	==========================================
+/home/jholten/graphs/great-britain-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/great-britain-sorted.graph	
+/home/jholten/graphs/great-britain-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/great-britain-sorted.graph	
+/home/jholten/graphs/great-britain-sorted.graph	==========================================
+/home/jholten/graphs/great-britain-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/coPapersCiteseer-sorted.graph			GraphChecker
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	==========================================
+/home/jholten/graphs/coPapersCiteseer-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/germany-sorted.graph	==========================================
+/home/jholten/graphs/germany-sorted.graph			GraphChecker
+/home/jholten/graphs/germany-sorted.graph	==========================================
+/home/jholten/graphs/germany-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/germany-sorted.graph	
+/home/jholten/graphs/germany-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/germany-sorted.graph	
+/home/jholten/graphs/germany-sorted.graph	==========================================
+/home/jholten/graphs/germany-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/in-2004-sorted.graph	==========================================
+/home/jholten/graphs/in-2004-sorted.graph			GraphChecker
+/home/jholten/graphs/in-2004-sorted.graph	==========================================
+/home/jholten/graphs/in-2004-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/in-2004-sorted.graph	
+/home/jholten/graphs/in-2004-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/in-2004-sorted.graph	
+/home/jholten/graphs/in-2004-sorted.graph	==========================================
+/home/jholten/graphs/in-2004-sorted.graph	The graph format seems correct.
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph			GraphChecker
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx.graph	The graph format seems correct.
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph			GraphChecker
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	Note: Output will be given using the IDs from file, i.e. the IDs are starting from 1.
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	IO done. Now checking the graph .... 
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	==========================================
+/home/jholten/graphs/TSOPF_FS_b300_c2.mtx-sorted.graph	The graph format seems correct.
