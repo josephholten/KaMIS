@@ -265,7 +265,7 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << " --seed=" << rand() << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
+            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << ls_time_limit << " --seed=" << rand() % 100000 << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
             const std::string& system_call = ss.str();
 
             std::system(system_call.c_str());
