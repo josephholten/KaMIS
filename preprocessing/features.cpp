@@ -101,28 +101,25 @@ private:
         }
     }
 
-
     void local_clustering_coefficient(feature_mat::feature_vec_t& lcc) {
         forall_nodes(m_G, node) {
-            EdgeID local_edges;
-            std::unordered_set<NodeID> neighbors;      // don't know how to do faster? maybe using bitset from boost?
-            neighbors.reserve(m_G.getNodeDegree(node));
+            EdgeID local_edges = 0;
+            std::unordered_set<NodeID> neighbors {};      // don't know how to do faster? maybe using bitset from boost?
+            neighbors.reserve(m_G.getNodeDegree(node)+1);
             forall_out_edges(m_G, edge, node) {
                 neighbors.insert(m_G.getEdgeTarget(edge));
             } endfor
-            forall_out_edges(m_G, edge, node) {
-                auto neighbor = m_G.getEdgeTarget(edge);
+            for (auto& neighbor : neighbors) {
                 forall_out_edges(m_G, neighbor_edge, neighbor) {
-                    if (neighbors.find(neighbor) != neighbors.end()) {
+                    if (neighbors.find(m_G.getEdgeTarget(neighbor_edge)) != neighbors.end())
                         ++local_edges;
-                    }
                 } endfor
-            } endfor
+            }
 
             if (m_G.getNodeDegree(node) > 1)
-                lcc[node] = ((double) 2*local_edges) / (m_G.getNodeDegree(node) * (m_G.getNodeDegree(node) - 1));
+                lcc[node] = ((double) local_edges) / (m_G.getNodeDegree(node) * (m_G.getNodeDegree(node) - 1));
             else
-                lcc[node] = 1;
+                lcc[node] = 0;
         } endfor
     }
 
@@ -205,11 +202,11 @@ public:
 
         auto& avg_chi2_deg_col = m_feature_mat.get_feature_col(AVG_CHI2_DEG);
         forall_nodes(m_G, node) {
-            EdgeWeight sum = 0;
+            double sum = 0;
             forall_out_edges(m_G, edge, node) {
-                sum += m_G.getNodeDegree(node);
+                sum += m_feature_mat.get_feature_col(CHI2_DEG)[m_G.getEdgeTarget(edge)];
             } endfor
-            avg_chi2_deg_col[node] = m_G.getNodeDegree(node) == 0 ? 0 : (double) sum / m_G.getNodeDegree(node);
+            avg_chi2_deg_col[node] = m_G.getNodeDegree(node) == 0 ? 0 : sum / m_G.getNodeDegree(node);
         } endfor
         m_feature_mat.filled_col(AVG_CHI2_DEG);
 
@@ -222,7 +219,7 @@ public:
         // coloring
         std::vector<int> node_coloring(m_G.number_of_nodes());
         greedy_coloring(node_coloring);
-        int greedy_chromatic_number = *std::max_element(node_coloring.begin(), node_coloring.end());
+        int greedy_chromatic_number = *std::max_element(node_coloring.begin(), node_coloring.end()) + 1;
 
         auto& local_chromatic_density_estimate = m_feature_mat.get_feature_col(CHROMATIC);
         forall_nodes(m_G, node) {
@@ -265,11 +262,18 @@ public:
 
         for (int round = 1; round <= ls_rounds; ++round) {
             std::stringstream ss;
-            ss << "deploy/weighted_local_search " << path << " --out=" << temp_folder << "/" << name << ".w_ls" << ls_time_limit << " --seed=" << rand() % 100000 << " --time_limit=" << ls_time_limit << " > /dev/null";  // > /dev/null to supress output
-            const std::string& system_call = ss.str();
+            std::string ls_name;
+            ss << temp_folder << "/" << name << ".w_ls" << ls_time_limit;
+            ls_name = ss.str();
+            ss.str("");
+            ss << "deploy/weighted_local_search " << path
+               << " --out="                       << ls_name
+               << " --seed="                      << rand() % 100000
+               << " --time_limit="                << ls_time_limit
+               << " > /dev/null";  // > /dev/null to supress output
 
-            std::system(system_call.c_str());
-            std::ifstream w_ls_file(path + ".w_ls");
+            std::system(ss.str().c_str());
+            std::ifstream w_ls_file(ls_name);
             // read signal from cin and add the signal to ls_col
             std::transform(std::istream_iterator<int>(w_ls_file), std::istream_iterator<int>(),
                            ls_col.begin(), ls_col.begin(), std::plus<double>());
