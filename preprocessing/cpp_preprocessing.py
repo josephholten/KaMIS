@@ -14,7 +14,7 @@ class Logger:
 
 def cpp_features(graph_path: str, temp_folder: str,removed: np.array = None) -> str:
     graph_name = graph_path[graph_path.rfind("/")+1:]
-    if removed is not None or len(removed) != 0:
+    if removed is not None and len(removed) != 0:
         reduced_path = temp_folder + graph_name + ".red" + str(len(removed))  # not super elegant...?
         write(graph_path, reduced_path, removed)
     else:
@@ -73,8 +73,8 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array = None):
         out_file.write(str(number_of_edges // 2) + " ")
         out_file.write(str(header[2]) + "\n")
 
-        for line in new_lines:
-            if line:
+        for node, line in enumerate(new_lines):
+            if exists[node]:
                 out_file.write(" ".join(map(str, line)) + "\n")
 
 
@@ -82,6 +82,4 @@ if __name__ == "__main__":
     # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red", np.array([]))
     # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red1", np.array([1]))
     # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red2", np.array([1, 3]))
-    cpp_features("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/graph_files/", np.array([]))
-    cpp_features("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/graph_files/", np.array([1]))
-    cpp_features("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/graph_files/", np.array([1, 2]))
+    print(cpp_features("/home/jholten/test_graphs/bcsstk31-sorted.graph", "/home/jholten/graph_files/", np.array([])))
