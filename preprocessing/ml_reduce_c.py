@@ -17,8 +17,12 @@ with open(GRAPH_PATH) as graph_file:
     line = graph_file.readline()
     while line[0] == "%":  # skip comments at start
         line = graph_file.readline()
-    number_of_nodes = int(line.split()[0])  # number of nodes is first number in first line
-    has_node_weights = bool(int(line.split()[2]) & 2)
+    header = list(map(int, line.split()))
+    number_of_nodes = header[0]  # number of nodes is first number in first line
+    if len(header) == 3:
+        has_node_weights = bool(int(line.split()[2]) & 2)
+    else:
+        has_node_weights = False
 
 # where the reduced graph is stored
 reduction_path = ""
