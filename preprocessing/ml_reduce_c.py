@@ -1,56 +1,53 @@
-import subprocess
 import sys
 import os
 
 import numpy as np
 import xgboost as xgb
-from cpp_preprocessing import cpp_features, Logger, write
+from cpp_preprocessing import cpp_features, write, weight_nodes
 from os.path import basename
-
-# mtxe first graph no convergence of eigenvectors ... strange
 
 # only run on first graph of them all
 GRAPH_PATH = sys.argv[1]
 q = float(sys.argv[2])
 
-KERNEL_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
-
-# list of nodes that have been removed
-removed = np.array([])
-
 bst = xgb.Booster({'nthread': 16})
 bst.load_model("2021-07-01_09-47-28.model")
 
-num_stages = 1
-#q = 0.98   # confidence niveau
-
 with open(GRAPH_PATH) as graph_file:
     line = graph_file.readline()
-    while line[0]=="%":  # skip comments at start
+    while line[0] == "%":  # skip comments at start
         line = graph_file.readline()
-    number_of_nodes = int(line.split()[0])   # number of nodes is first number in first line
+    number_of_nodes = int(line.split()[0])  # number of nodes is first number in first line
+    has_node_weights = bool(int(line.split()[2]) & 2)
 
+# where the reduced graph is stored
 reduction_path = ""
-#logger.log("reducing graph:")
-for stage in range(1, num_stages+1):
-    #logger.log(f"stage {stage}")
+total_removed = np.array([])
 
-    # calculate and write features to feature_path
-    reduction_path = cpp_features(GRAPH_PATH, "/home/jholten/graph_files/", removed=removed)
+num_stages = 1
+for stage in range(1, num_stages + 1):
+    # calculate features and store them in the "/graph_files/" folder, reduce the graph and write the reduced graph
+    # to reduction_path
+    reduction_path = cpp_features(GRAPH_PATH, "/home/jholten/graph_files/", removed=total_removed)
 
-    # load features and labels into a dmatrix
-
-    feature_path = "/home/jholten/graph_files/" + os.path.basename(GRAPH_PATH) + ("." + reduction_path.split(".")[-1] if len(removed) != 0 else "") + ".feat" 
+    # load features into a dmatrix
+    feature_path = "/home/jholten/graph_files/" + os.path.basename(GRAPH_PATH) + (
+        "." + reduction_path.split(".")[-1] if len(total_removed) != 0 else "") + ".feat"
     feature_matrix = xgb.DMatrix(data=np.loadtxt(feature_path))
 
     # predict based on the features
     label_pred = bst.predict(feature_matrix)
 
     # remove if prediction lower than threshold
-    removed = np.array(np.where(label_pred <= 1 - q))[0]
-    print(len(removed))
+    total_removed = np.append(total_removed, np.array(np.where(label_pred <= 1 - q))[0])
 
-#logger.log(f"in graph {basename(GRAPH_PATH)} removed a total of {len(removed)} nodes, {len(removed)/number_of_nodes * 100:.4f}%", "(", *removed, ")")
-ml_reduction_path = KERNEL_FOLDER + basename(GRAPH_PATH) + ".ml_kernel" + str(int(q*100))
-print("writing to", ml_reduction_path)
-write(reduction_path, ml_reduction_path, removed)
+print(f"removed in total {len(total_removed)} nodes ({len(total_removed)/number_of_nodes*100:.2%})")
+
+#if has_node_weights:
+    #print(f"with offset {weight_nodes(GRAPH_PATH, total_removed)}")
+
+KERNEL_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
+
+ml_reduction_path = KERNEL_FOLDER + basename(GRAPH_PATH) + ".ml_kernel" + str(int(q * 100))
+print("writing kernel to", ml_reduction_path)
+write(reduction_path, ml_reduction_path, total_removed)

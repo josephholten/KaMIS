@@ -78,6 +78,24 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array = None):
                 out_file.write(" ".join(map(str, line)) + "\n")
 
 
+def weight_nodes(graph_path: str, nodes: np.array) -> int:
+    exists = np.zeros(len(nodes))
+    exists[nodes] = 1
+    weight = 0
+
+    with open(graph_path) as graph_file:
+        line = graph_file.readline()
+        while line[0] == "%":
+            line = graph_file.readline()
+        header = line
+        if not int(header.split()[2]) & 2:
+            return len(nodes)
+        for node, line in enumerate(graph_file):
+            if exists[node]:
+                weight += int(line.split()[0])   # node weight is first number in the row
+    return weight
+
+
 if __name__ == "__main__":
     # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red", np.array([]))
     # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red1", np.array([1]))
