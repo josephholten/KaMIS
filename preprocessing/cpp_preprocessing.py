@@ -99,13 +99,13 @@ def weight_nodes(graph_path: str, nodes: np.array) -> int:
 
 
 def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
-    exists = np.zeros(len(nodes))
-    exists[nodes] = 1
     with open(graph_path) as graph_file:
         line = graph_file.readline()
         while line[0] == "%":
             line = graph_file.readline()
         header = list(map(int, line.split()))
+        exists = np.zeros(header[0])
+        exists[nodes] = 1
         has_edge_weights = len(header) == 3 and header[2] & 1
         for node, line in graph_file:
             if exists[node]:
