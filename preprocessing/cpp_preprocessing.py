@@ -99,6 +99,7 @@ def weight_nodes(graph_path: str, nodes: np.array) -> int:
 
 
 def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
+    neighbors = np.array([])
     with open(graph_path) as graph_file:
         line = graph_file.readline()
         while line[0] == "%":
