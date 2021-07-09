@@ -12,7 +12,7 @@ class Logger:
         if self.log: print(*args, **kwargs)
 
 
-def cpp_features(graph_path: str, temp_folder: str,removed: np.array = None) -> str:
+def cpp_features(graph_path: str, temp_folder: str, removed: np.array) -> str:
     graph_name = graph_path[graph_path.rfind("/")+1:]
     if removed is not None and len(removed) != 0:
         reduced_path = temp_folder + graph_name + ".red" + str(len(removed))  # not super elegant...?
@@ -24,11 +24,8 @@ def cpp_features(graph_path: str, temp_folder: str,removed: np.array = None) -> 
     return reduced_path
 
 
-def write(in_graph_path: str, out_graph_path: str, removed: np.array = None):
-    if removed is None:
-        removed = np.array([])
-
-    #removed = removed.astype(int)
+def write(in_graph_path: str, out_graph_path: str, removed: np.array):
+    removed = removed.astype(int)
 
     with open(in_graph_path) as graph_file, open(out_graph_path, "w") as out_file:
         header = graph_file.readline()
@@ -117,7 +114,7 @@ def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
 
 
 if __name__ == "__main__":
-    # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red", np.array([]))
-    # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red1", np.array([1]))
-    # write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red2", np.array([1, 3]))
+    write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red", np.array([]))
+    write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red1", np.array([1]))
+    write("/home/jholten/KaMIS/examples/weight_nodes.graph", "/home/jholten/KaMIS/examples/weight_nodes.graph.red2", np.array([1, 3]))
     print(cpp_features("/home/jholten/test_graphs/bcsstk31-sorted.graph", "/home/jholten/graph_files/", np.array([])))

@@ -23,7 +23,7 @@ from tqdm import tqdm
 time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 print(time)
 graph_paths = glob("/home/jholten/graphs/*")
-feature_paths = [ "/home/jholten/graph_files/" + os.path.basename(path) + ".feat" for path in graph_paths]
+feature_paths = ["/home/jholten/graph_files/" + os.path.basename(path) + ".feat" for path in graph_paths]
 label_paths = ["/home/jholten/mis/kamis_results/" + os.path.basename(path) + ".mis" for path in graph_paths]
 
 with Pool(cpu_count()) as pool:
