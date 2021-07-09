@@ -77,6 +77,8 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array = None):
             if exists[node]:
                 out_file.write(" ".join(map(str, line)) + "\n")
 
+        return len(exists) - np.sum(exists)   # returns the number of removed vertices
+
 
 def weight_nodes(graph_path: str, nodes: np.array) -> int:
     exists = np.zeros(len(nodes))
@@ -87,13 +89,30 @@ def weight_nodes(graph_path: str, nodes: np.array) -> int:
         line = graph_file.readline()
         while line[0] == "%":
             line = graph_file.readline()
-        header = line
-        if not int(header.split()[2]) & 2:
+        header = list(map(int, line.split()))
+        if len(header) < 3 or not header[2] & 2:    # account for: no weight specifier = no weights
             return len(nodes)
         for node, line in enumerate(graph_file):
             if exists[node]:
                 weight += int(line.split()[0])   # node weight is first number in the row
     return weight
+
+
+def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
+    exists = np.zeros(len(nodes))
+    exists[nodes] = 1
+    with open(graph_path) as graph_file:
+        line = graph_file.readline()
+        while line[0] == "%":
+            line = graph_file.readline()
+        header = list(map(int, line.split()))
+        has_edge_weights = len(header) == 3 and header[2] & 1
+        for node, line in graph_file:
+            if exists[node]:
+                neighbors = np.append(neighbors, list(map(int, line.split()))[0::(2 if has_edge_weights else 1)])
+
+
+
 
 
 if __name__ == "__main__":
