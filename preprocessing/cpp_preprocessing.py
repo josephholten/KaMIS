@@ -107,7 +107,7 @@ def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
         exists = np.zeros(header[0])
         exists[nodes] = 1
         has_edge_weights = len(header) == 3 and header[2] & 1
-        for node, line in graph_file:
+        for node, line in enumerate(graph_file):
             if exists[node]:
                 neighbors = np.append(neighbors, list(map(int, line.split()))[0::(2 if has_edge_weights else 1)])
 
