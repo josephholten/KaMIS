@@ -28,7 +28,7 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array = None):
     if removed is None:
         removed = np.array([])
 
-    removed = removed.astype(int)
+    #removed = removed.astype(int)
 
     with open(in_graph_path) as graph_file, open(out_graph_path, "w") as out_file:
         header = graph_file.readline()
