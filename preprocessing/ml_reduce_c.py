@@ -29,33 +29,36 @@ with open(GRAPH_PATH) as graph_file:
 
 # where the reduced graph is stored
 reduction_path = ""
-total_removed = np.array([])
+exists = np.ones(number_of_nodes)
 total_added = np.array([])
 
 num_stages = 5
 for stage in range(1, num_stages + 1):
-    #print(f"{stage=}")
+    print(f"{stage=}")
     # calculate features and store them in the "/graph_files/" folder, reduce the graph and write the reduced graph
     # to reduction_path
-    reduction_path = cpp_features(GRAPH_PATH, "/home/jholten/graph_files/", removed=total_removed)
+    reduction_path = cpp_features(GRAPH_PATH, "/home/jholten/graph_files/", exists=exists)
 
     # load features into a dmatrix
+    removed = np.where(exists == 0)
     feature_path = "/home/jholten/graph_files/" + os.path.basename(GRAPH_PATH) + (
-        "." + reduction_path.split(".")[-1] if len(total_removed) != 0 else "") + ".feat"
+        "." + reduction_path.split(".")[-1] if len(removed) != 0 else "") + ".feat"
     feature_matrix = xgb.DMatrix(data=np.loadtxt(feature_path))
 
     # predict based on the features
     label_pred = bst.predict(feature_matrix)
 
     # remove if prediction lower than threshold
-    total_removed = np.append(total_removed, np.where(label_pred <= 1 - q)[0])
+    exists[np.where(label_pred <= 1 - q)[0]] = 0
 
     # add to MIS if prediction is higher than threshold
-    stage_added = np.where(label_pred >= q)[0]
-    total_added = np.append(total_added, stage_added)
-
-    # remove their neighborhoods
-    total_removed = np.append(total_removed, get_neighbors(GRAPH_PATH, stage_added))
+    likely = np.where(label_pred >= q)[0]
+    # decending sort the likely candidates based on their predicted value
+    for node in np.flip(likely[np.argsort(label_pred[likely])]):
+        # if it still exists, keep it, and remove its neighbors
+        if exists[node]:
+            total_added = np.append(total_added, node)
+            exists[get_neighbors(GRAPH_PATH, [node])] = 0
 
 KERNEL_FOLDER = "/home/jholten/kernels/ml_reduce_kernels/"
 
@@ -65,7 +68,7 @@ print("elapsed time:", end - start)
 
 ml_reduction_path = KERNEL_FOLDER + basename(GRAPH_PATH) + ".ml_kernel" + str(int(q * 100))
 print("writing kernel to", ml_reduction_path)
-number_removed = write(GRAPH_PATH, ml_reduction_path, total_removed)
+number_removed = write(GRAPH_PATH, ml_reduction_path, exists)
 print(f"removed in total {number_removed} nodes ({number_removed/number_of_nodes:.2%})")
 
 # save the added nodes to a file and print offset

@@ -12,11 +12,12 @@ class Logger:
         if self.log: print(*args, **kwargs)
 
 
-def cpp_features(graph_path: str, temp_folder: str, removed: np.array) -> str:
+def cpp_features(graph_path: str, temp_folder: str, exists: np.array) -> str:
     graph_name = graph_path[graph_path.rfind("/")+1:]
-    if removed is not None and len(removed) != 0:
+    removed = np.where(exists == 0)
+    if len(removed) != 0:
         reduced_path = temp_folder + graph_name + ".red" + str(len(removed))  # not super elegant...?
-        write(graph_path, reduced_path, removed)
+        write(graph_path, reduced_path, exists)
     else:
         reduced_path = graph_path
     subprocess.run(["deploy/features", reduced_path, temp_folder, "5"])
@@ -24,8 +25,7 @@ def cpp_features(graph_path: str, temp_folder: str, removed: np.array) -> str:
     return reduced_path
 
 
-def write(in_graph_path: str, out_graph_path: str, removed: np.array):
-    removed = removed.astype(int)
+def write(in_graph_path: str, out_graph_path: str, exists: np.array):
 
     with open(in_graph_path) as graph_file, open(out_graph_path, "w") as out_file:
         header = graph_file.readline()
@@ -37,9 +37,6 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array):
         header = list(map(int, header.split()))
         if len(header) == 2:
             header.append(0)
-        exists = np.ones(header[0]) # header : n m w  => n = number of nodes
-        if removed.size != 0:
-            exists[removed] = 0
         # cumulative sum: new_ids[i] = sum_{0..i} (exists([k])  => makes a closed set
         new_id_vec = np.cumsum(exists).astype(int)
 
