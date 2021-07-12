@@ -78,9 +78,7 @@ def write(in_graph_path: str, out_graph_path: str, removed: np.array):
 
 
 def weight_nodes(graph_path: str, nodes: np.array) -> int:
-    exists = np.zeros(len(nodes))
-    exists[nodes] = 1
-    weight = 0
+    nodes = nodes.astype(int)
 
     with open(graph_path) as graph_file:
         line = graph_file.readline()
@@ -89,6 +87,9 @@ def weight_nodes(graph_path: str, nodes: np.array) -> int:
         header = list(map(int, line.split()))
         if len(header) < 3 or not header[2] & 2:    # account for: no weight specifier = no weights
             return len(nodes)
+        exists = np.zeros(header[0])
+        exists[nodes] = 1
+        weight = 0
         for node, line in enumerate(graph_file):
             if exists[node]:
                 weight += int(line.split()[0])   # node weight is first number in the row
@@ -96,7 +97,7 @@ def weight_nodes(graph_path: str, nodes: np.array) -> int:
 
 
 def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
-    neighbors = np.array([])
+    neighbors = set()
     with open(graph_path) as graph_file:
         line = graph_file.readline()
         while line[0] == "%":
@@ -107,7 +108,9 @@ def get_neighbors(graph_path: str, nodes: np.array) -> np.array:
         has_edge_weights = len(header) == 3 and header[2] & 1
         for node, line in enumerate(graph_file):
             if exists[node]:
-                neighbors = np.append(neighbors, list(map(int, line.split()))[0::(2 if has_edge_weights else 1)])
+                neighbors |= set(list(map(lambda x: int(x)-1, line.split()))[0::(2 if has_edge_weights else 1)])
+    return np.array(list(neighbors))
+
 
 
 
