@@ -1,0 +1,5 @@
+reduction_time 0.000745773
+time 0.00167992
+MIS_weight 5781
+MIS_weight_check 5781
+writing independent set to /home/jholten/mis/ml_reduce_results/Ga3As3H12.mtx-sorted.graph.kernel.ml_kernel95.mis ... 

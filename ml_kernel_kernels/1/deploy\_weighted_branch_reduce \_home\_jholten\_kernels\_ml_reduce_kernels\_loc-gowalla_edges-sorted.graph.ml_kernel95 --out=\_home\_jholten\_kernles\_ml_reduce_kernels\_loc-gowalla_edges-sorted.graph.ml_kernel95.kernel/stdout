@@ -1,0 +1,5 @@
+reduction_time 0.00888205
+time 0.0227013
+MIS_weight 112283
+MIS_weight_check 112283
+writing independent set to /home/jholten/kernles/ml_reduce_kernels/loc-gowalla_edges-sorted.graph.ml_kernel95.kernel ... 

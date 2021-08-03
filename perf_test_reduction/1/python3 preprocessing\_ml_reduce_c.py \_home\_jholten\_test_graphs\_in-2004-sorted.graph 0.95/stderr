@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "preprocessing/ml_reduce_c.py", line 61, in <module>
+    exists[get_neighbors(GRAPH_PATH, [node])] = 0
+IndexError: arrays used as indices must be of integer (or boolean) type

@@ -1,0 +1,8 @@
+reduction_time 0.00666499
+4150 [0.00679183]
+4151 [0.00703287]
+4170 [0.017451]
+time 0.0228932
+MIS_weight 4170
+MIS_weight_check 4170
+writing independent set to /home/jholten/mis/ml_reduce_results/brack2-sorted.graph.mis ... 

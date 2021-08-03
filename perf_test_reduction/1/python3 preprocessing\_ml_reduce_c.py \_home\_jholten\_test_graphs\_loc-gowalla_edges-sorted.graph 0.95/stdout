@@ -1,0 +1,9 @@
+stage=1
+stage=2
+stage=3
+stage=4
+stage=5
+elapsed time: 6545.299207448959
+writing kernel to /home/jholten/kernels/ml_reduce_kernels/loc-gowalla_edges-sorted.graph.ml_kernel95
+removed in total 84278.0 nodes (42.87%)
+with offset 164218

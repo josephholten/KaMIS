@@ -1,0 +1,5 @@
+reduction_time 0.00120282
+time 0.00278063
+MIS_weight 13745
+MIS_weight_check 13745
+writing independent set to /home/jholten/mis/ml_reduce_results/loc-gowalla_edges-sorted.graph.mis ... 

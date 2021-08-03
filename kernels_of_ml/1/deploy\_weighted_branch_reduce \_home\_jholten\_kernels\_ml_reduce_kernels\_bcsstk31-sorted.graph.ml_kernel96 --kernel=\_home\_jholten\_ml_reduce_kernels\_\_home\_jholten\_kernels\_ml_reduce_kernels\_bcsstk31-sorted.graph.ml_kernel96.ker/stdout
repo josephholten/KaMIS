@@ -1,0 +1,3 @@
+kernel_nodes 32
+kernel_time 0.0105052
+writing kernel to /home/jholten/ml_reduce_kernels//home/jholten/kernels/ml_reduce_kernels/bcsstk31-sorted.graph.ml_kernel96.ker

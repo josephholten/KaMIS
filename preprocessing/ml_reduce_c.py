@@ -34,7 +34,7 @@ total_added = np.array([])
 
 num_stages = 5
 for stage in range(1, num_stages + 1):
-    print(f"{stage=}")
+    #print(f"{stage=}")
     # calculate features and store them in the "/graph_files/" folder, reduce the graph and write the reduced graph
     # to reduction_path
     reduction_path = cpp_features(GRAPH_PATH, "/home/jholten/graph_files/", exists=exists)

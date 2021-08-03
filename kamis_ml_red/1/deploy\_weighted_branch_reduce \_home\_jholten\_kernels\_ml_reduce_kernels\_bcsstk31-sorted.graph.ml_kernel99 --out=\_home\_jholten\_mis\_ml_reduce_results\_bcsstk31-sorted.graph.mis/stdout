@@ -1,0 +1,7 @@
+reduction_time 0.0203772
+1680 [0.0205832]
+1717 [0.033525]
+time 0.101741
+MIS_weight 1717
+MIS_weight_check 1717
+writing independent set to /home/jholten/mis/ml_reduce_results/bcsstk31-sorted.graph.mis ... 

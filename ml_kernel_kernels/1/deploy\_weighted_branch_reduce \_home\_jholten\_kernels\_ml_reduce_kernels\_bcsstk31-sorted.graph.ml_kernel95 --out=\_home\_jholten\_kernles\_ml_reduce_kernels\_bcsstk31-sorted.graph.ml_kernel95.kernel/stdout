@@ -1,0 +1,6 @@
+reduction_time 0.00742793
+2324 [0.00757289]
+time 0.0101967
+MIS_weight 2324
+MIS_weight_check 2324
+writing independent set to /home/jholten/kernles/ml_reduce_kernels/bcsstk31-sorted.graph.ml_kernel95.kernel ... 

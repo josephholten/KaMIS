@@ -1,0 +1,9 @@
+stage=1
+stage=2
+stage=3
+stage=4
+stage=5
+elapsed time: 744.7771849632263
+writing kernel to /home/jholten/kernels/ml_reduce_kernels/brack2-sorted.graph.ml_kernel95
+removed in total 41708.0 nodes (66.59%)
+with offset 46726

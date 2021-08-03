@@ -1,0 +1,9 @@
+stage=1
+stage=2
+stage=3
+stage=4
+stage=5
+elapsed time: 1250.5264761447906
+writing kernel to /home/jholten/kernels/ml_reduce_kernels/fe_tooth-sorted.graph.ml_kernel95
+removed in total 50373.0 nodes (64.47%)
+with offset 72099

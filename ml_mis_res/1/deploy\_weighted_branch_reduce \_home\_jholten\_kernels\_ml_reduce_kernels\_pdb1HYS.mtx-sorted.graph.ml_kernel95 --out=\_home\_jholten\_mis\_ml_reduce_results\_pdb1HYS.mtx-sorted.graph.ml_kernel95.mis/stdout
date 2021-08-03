@@ -1,0 +1,7 @@
+reduction_time 0.0268271
+980 [0.0771251]
+%timeout
+time 1000
+MIS_weight 980
+MIS_weight_check 980
+writing independent set to /home/jholten/mis/ml_reduce_results/pdb1HYS.mtx-sorted.graph.ml_kernel95.mis ... 

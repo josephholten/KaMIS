@@ -1,0 +1,9 @@
+stage=1
+stage=2
+stage=3
+stage=4
+stage=5
+elapsed time: 401.3397419452667
+writing kernel to /home/jholten/kernels/ml_reduce_kernels/ncvxqp5.mtx-sorted.graph.ml_kernel95
+removed in total 40975.0 nodes (65.56%)
+with offset 30884

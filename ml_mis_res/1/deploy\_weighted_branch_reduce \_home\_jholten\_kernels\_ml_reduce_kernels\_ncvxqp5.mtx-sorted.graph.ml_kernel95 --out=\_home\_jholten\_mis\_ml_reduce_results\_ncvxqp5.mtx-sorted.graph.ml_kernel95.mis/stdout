@@ -1,0 +1,5 @@
+reduction_time 0.00181985
+time 0.0046838
+MIS_weight 20418
+MIS_weight_check 20418
+writing independent set to /home/jholten/mis/ml_reduce_results/ncvxqp5.mtx-sorted.graph.ml_kernel95.mis ... 

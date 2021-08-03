@@ -123,9 +123,11 @@ int main(int argn, char **argv) {
                 std::ofstream output_reduced(mis_config.kernel_filename);
 
                 output_reduced << "%kernel_time " << kernel_time.count() << "\n";
+		output_reduced << "%kernel_offset " << weight_offset << "\n";
 
                 std::cout << "kernel_nodes " << rG.number_of_nodes() << "\n";
                 std::cout << "kernel_time " << kernel_time.count() << "\n";
+		std::cout << "kernel_offset " << weight_offset << "\n";
 
                 std::cout << "writing kernel to " << mis_config.kernel_filename << "\n";
                 graph_io::writeGraphNodeWeighted(rG, output_reduced);

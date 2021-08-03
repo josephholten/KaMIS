@@ -1,0 +1,5 @@
+reduction_time 0.00184798
+time 0.00475436
+MIS_weight 20418
+MIS_weight_check 20418
+writing independent set to /home/jholten/kernles/ml_reduce_kernels/ncvxqp5.mtx-sorted.graph.ml_kernel95.kernel ... 

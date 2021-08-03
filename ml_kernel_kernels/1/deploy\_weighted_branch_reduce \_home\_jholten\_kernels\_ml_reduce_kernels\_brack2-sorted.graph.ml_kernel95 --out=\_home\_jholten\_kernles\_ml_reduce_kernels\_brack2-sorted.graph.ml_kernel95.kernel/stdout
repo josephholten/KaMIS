@@ -1,0 +1,6 @@
+reduction_time 0.00504518
+20125 [0.0145202]
+time 0.0239154
+MIS_weight 20125
+MIS_weight_check 20125
+writing independent set to /home/jholten/kernles/ml_reduce_kernels/brack2-sorted.graph.ml_kernel95.kernel ... 
